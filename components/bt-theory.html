@@ -1,0 +1,2007 @@
+<section class="bt-theory-root">
+
+  <!-- 🔍 SEARCH BAR -->
+  <div class="bt-theory-search">
+    <input
+      type="text"
+      id="btTheorySearch"
+      placeholder="Search tree concepts (e.g. inorder, height, recursion...)"
+    />
+  </div>
+  
+<!-- Theory Font Controls -->
+
+
+
+
+  <!-- 📦 THEORY BLOCKS CONTAINER -->
+  <div class="bt-theory-list">
+
+    <!-- THEORY CARD -->
+    <div class="bt-theory-card" data-keywords="tree basics node root leaf height depth">
+      <div class="bt-theory-header">
+        <span>Tree Basics</span>
+        <span class="bt-chevron">+</span>
+      </div>
+      <div class="bt-theory-content">
+        <div class="bt-theory-card open" data-keywords="tree basics node root parent child leaf height depth level">
+
+  <div class="bt-theory-header">
+    <span>Tree Basics</span>
+    <span class="bt-chevron">▶</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <div class="bt-theory-block">
+
+      <div class="bt-theory-part">
+        <div class="bt-theory-tag">What it is</div>
+        <p>
+          A tree is a way to organize data where everything starts from one point
+          and then branches out. Each box you see in a tree diagram is called a
+          node. The topmost node is the root, and every connection flows downward
+          from it.
+        </p>
+      </div>
+
+      <div class="bt-theory-part">
+        <div class="bt-theory-tag">Why it matters</div>
+        <p>
+          Trees naturally model hierarchy. File systems, folders, HTML structure,
+          decision making, and recursion problems all follow this pattern. Once
+          you understand tree basics, many DSA problems stop feeling random.
+        </p>
+      </div>
+
+      <div class="bt-theory-part">
+        <div class="bt-theory-tag">Key terms (intuition)</div>
+        <p>
+          A parent is a node that leads to another node. A child is a node that
+          comes from a parent. A leaf is a node that has no children. These names
+          simply describe direction, not importance.
+        </p>
+      </div>
+
+      <div class="bt-theory-part">
+        <div class="bt-theory-tag">Height vs depth</div>
+        <p>
+          Depth tells how far a node is from the root. Height tells how far a node
+          is from the deepest leaf below it. Think of depth as going down from
+          the top, and height as measuring how tall the remaining tree is.
+        </p>
+      </div>
+
+      <div class="bt-theory-part bt-mistake">
+        <div class="bt-theory-tag">Common mistake</div>
+        <p>
+          Many learners mix up height and depth or assume the root must be in the
+          center. The root is just the starting reference, not a balance point.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="bt-theory-card" data-keywords="types of trees binary full complete perfect skewed">
+  <div class="bt-theory-header">
+    <span>Types of Trees</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "TYPES OF TREES" THEORY HERE
+         Use <div class="bt-theory-block">...</div>
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">What it is</div>
+    <p>
+      A binary tree is a tree where each node can have at most two children.
+      These children are commonly called the left child and the right child.
+      A node may have two children, one child, or no children at all.
+    </p>
+    <p>
+      When you see the visualizer, every circle represents a node, and each node
+      can branch into at most two directions. This strict limit is what makes
+      binary trees easy to visualize and powerful for algorithms.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Maximum nodes at a level</div>
+    <p>
+      In a binary tree, the number of nodes at each level follows a simple
+      pattern. Starting from the root, the number of nodes can at most double
+      as you move down each level.
+    </p>
+    <p>
+      For example, level 0 can have 1 node, level 1 can have 2 nodes, level 2 can
+      have 4 nodes, and so on. You can observe this clearly in the visualizer
+      when you build a complete or perfect binary tree.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Height and growth of the tree</div>
+    <p>
+      The height of a binary tree tells you how many levels it has from the root
+      to the deepest leaf. Height is important because it directly controls how
+      deep recursion can go.
+    </p>
+    <p>
+      In the visualizer, try building a skewed tree and notice how deep it goes
+      downward. Then compare it with a balanced tree. Even with the same number
+      of nodes, the height can be very different.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Balanced vs unbalanced trees</div>
+    <p>
+      A balanced binary tree keeps its height small, which makes searching and
+      traversal faster. An unbalanced tree grows more on one side, increasing
+      height and slowing down operations.
+    </p>
+    <p>
+      When you run traversals in the visualizer, balanced trees show smooth,
+      evenly distributed animations. Unbalanced trees feel longer and deeper
+      because recursion has to travel further down.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why these properties matter in practice</div>
+    <p>
+      Binary tree properties help you predict performance before writing code.
+      A shallow tree means faster operations and safer recursion. A tall tree
+      means more stack usage and slower execution.
+    </p>
+    <p>
+      This is why many advanced trees, like AVL trees and Red-Black trees,
+      exist: their only job is to control height and keep these properties
+      favorable.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      A very common mistake is assuming that a binary tree is automatically
+      balanced or complete. In reality, balance is a special condition and must
+      be enforced. The visualizer helps you see this mistake instantly.
+    </p>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+<div class="bt-theory-card" data-keywords="binary tree properties max nodes height">
+  <div class="bt-theory-header">
+    <span>Binary Tree Properties</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "BINARY TREE PROPERTIES" THEORY HERE
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Minimum and maximum height</div>
+    <p>
+      For a given number of nodes, a binary tree can have very different heights.
+      The minimum height happens when the tree is as balanced as possible. The
+      maximum height happens when the tree becomes skewed and looks like a chain.
+    </p>
+    <p>
+      In the visualizer, try inserting nodes in sorted order and observe how the
+      tree stretches downward. This is the worst-case height scenario.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Relationship between nodes and height</div>
+    <p>
+      A binary tree with small height can store a large number of nodes. As height
+      increases, recursion depth increases as well. This relationship is the
+      reason balanced trees are preferred in real systems.
+    </p>
+    <p>
+      When you increase height without increasing width, operations slow down.
+      The visualizer makes this visible by showing deeper recursive paths.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Leaf and internal nodes</div>
+    <p>
+      Leaf nodes are nodes with no children, while internal nodes have at least
+      one child. In many binary trees, the number of leaf nodes grows as the tree
+      becomes wider.
+    </p>
+    <p>
+      This distinction matters in problems where only leaves are processed, such
+      as expression trees or decision trees.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Complete vs perfect trees</div>
+    <p>
+      A complete binary tree fills each level from left to right, while a perfect
+      binary tree has all levels completely filled. Every perfect tree is
+      complete, but not every complete tree is perfect.
+    </p>
+    <p>
+      In the visualizer, building a level-order tree shows this difference very
+      clearly when null values appear on the last level.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      Students often focus only on traversal order and ignore height-related
+      properties. This leads to inefficient solutions and poor recursion design.
+    </p>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+<div class="bt-theory-card" data-keywords="traversal preorder inorder postorder level order">
+  <div class="bt-theory-header">
+    <span>Tree Traversals</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "TREE TRAVERSALS" THEORY HERE
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">What traversal means</div>
+    <p>
+      Traversal simply means visiting every node of a tree exactly once, but in
+      a specific order. The order matters because it decides how data is read,
+      copied, printed, or processed.
+    </p>
+    <p>
+      In the visualizer, traversal is not just about the final output. It is
+      about watching how recursion goes down the tree and then comes back up.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Preorder traversal</div>
+    <p>
+      Preorder traversal visits the root node first, then the left subtree,
+      and finally the right subtree. You can think of it as “decide first, then
+      explore.”
+    </p>
+    <p>
+      In the visualizer, preorder highlights the current node immediately when
+      recursion reaches it. This is why preorder is often used to copy a tree
+      or recreate its structure.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Inorder traversal</div>
+    <p>
+      In inorder traversal, the left subtree is visited first, then the node
+      itself, and then the right subtree. The root is processed in the middle.
+    </p>
+    <p>
+      When you run inorder traversal in the visualizer, notice how the root is
+      visited only after completely finishing the left side. In a Binary Search
+      Tree, this traversal gives values in sorted order.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Postorder traversal</div>
+    <p>
+      Postorder traversal visits both subtrees before the node itself. In simple
+      words, children are handled first, and the decision comes last.
+    </p>
+    <p>
+      In the visualizer, postorder processing happens during the recursion
+      unwind phase. This makes it useful for deleting trees or evaluating
+      expressions.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Level order traversal</div>
+    <p>
+      Level order traversal visits nodes level by level from top to bottom.
+      Unlike other traversals, it does not rely on recursion but on a queue.
+    </p>
+    <p>
+      In the visualizer, level order feels different because nodes are visited
+      horizontally rather than deeply. This traversal is commonly used when
+      building trees from arrays.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why traversal order matters</div>
+    <p>
+      The same tree can produce very different traversal outputs. Choosing the
+      right traversal decides whether you are copying a structure, sorting data,
+      or safely deleting nodes.
+    </p>
+    <p>
+      Watching traversal animations helps you understand that the real work
+      happens during recursion returns, not just during recursive calls.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      Many learners memorize traversal orders like “Root Left Right” without
+      understanding when the node is actually processed. This leads to confusion
+      in recursion and wrong mental models.
+    </p>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+<div class="bt-theory-card" data-keywords="construct tree preorder inorder postorder">
+  <div class="bt-theory-header">
+    <span>Tree Construction</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "TREE CONSTRUCTION FROM TRAVERSALS" THEORY HERE
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">What this means</div>
+    <p>
+      Tree construction from traversals means rebuilding the original tree when
+      you are given traversal orders instead of the tree itself. This is possible
+      only when enough information is available to uniquely decide the structure.
+    </p>
+    <p>
+      Your visualizer demonstrates this idea by allowing traversal inputs and
+      then reconstructing the tree step by step.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why inorder is special</div>
+    <p>
+      Inorder traversal tells you how nodes are divided between the left and
+      right subtrees. Without inorder, there is no clear boundary between left
+      and right children.
+    </p>
+    <p>
+      This is why inorder traversal is mandatory for unique tree construction.
+      Preorder or postorder alone cannot decide the structure.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Preorder + inorder construction</div>
+    <p>
+      In preorder traversal, the first element is always the root. Once the root
+      is known, its position in inorder traversal splits the tree into left and
+      right subtrees.
+    </p>
+    <p>
+      In the visualizer, notice how the root is picked first and then recursion
+      builds the left subtree before the right subtree.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Postorder + inorder construction</div>
+    <p>
+      In postorder traversal, the last element is always the root. The inorder
+      traversal again helps divide left and right subtrees.
+    </p>
+    <p>
+      When you switch to postorder-based construction, the visualizer clearly
+      shows that the root appears only after both subtrees are processed.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why preorder + postorder is ambiguous</div>
+    <p>
+      Using preorder and postorder without inorder can lead to multiple valid
+      trees. Different structures can produce the same preorder and postorder
+      outputs.
+    </p>
+    <p>
+      This ambiguity is why your converter blocks such combinations and clearly
+      asks for inorder input.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">How recursion actually builds the tree</div>
+    <p>
+      Tree construction is a recursive process. Each recursive call builds a
+      smaller subtree by choosing a root and dividing the remaining nodes.
+    </p>
+    <p>
+      In the visualizer, watch how recursive calls go down until a null subtree
+      is reached, and then return upward while linking nodes together.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why this matters in real problems</div>
+    <p>
+      Understanding tree construction helps you debug traversal problems, design
+      recursive solutions, and understand how compilers and expression evaluators
+      build syntax trees.
+    </p>
+    <p>
+      This topic also explains why certain input combinations are rejected by
+      tools and exam questions.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      Many learners try to memorize construction steps without understanding why
+      inorder is required. This leads to confusion when ambiguous cases appear.
+    </p>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+<div class="bt-theory-card" data-keywords="binary search tree bst insert delete search">
+  <div class="bt-theory-header">
+    <span>Binary Search Tree (BST)</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "BST THEORY" HERE
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">What it is</div>
+    <p>
+      A Binary Search Tree is a special kind of binary tree where every node
+      follows an ordering rule. All values in the left subtree are smaller than
+      the node, and all values in the right subtree are larger.
+    </p>
+    <p>
+      This rule applies recursively to every subtree. Once this rule is broken,
+      the tree stops being a BST.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why BSTs are powerful</div>
+    <p>
+      The ordering property allows fast searching. Instead of checking every
+      node, you can decide whether to move left or right at each step.
+    </p>
+    <p>
+      In the visualizer, compare a normal binary tree with a BST. Searching in
+      a BST follows a clear direction, while a normal tree requires full
+      traversal.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Insertion intuition</div>
+    <p>
+      Inserting a value into a BST means starting at the root and repeatedly
+      moving left or right based on comparisons until an empty spot is found.
+    </p>
+    <p>
+      When you insert values in sorted order, the BST becomes skewed. This is
+      easy to observe in the visualizer and explains why insertion order matters.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Searching in a BST</div>
+    <p>
+      Searching follows the same logic as insertion. If the target value is
+      smaller, move left. If it is larger, move right. This continues until the
+      value is found or a null node is reached.
+    </p>
+    <p>
+      This directional search is what gives BSTs their efficiency advantage.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Deletion (high-level idea)</div>
+    <p>
+      Deleting a node from a BST depends on how many children it has. A leaf node
+      is easy to remove. A node with one child can be replaced by its child.
+      A node with two children requires rearranging the tree.
+    </p>
+    <p>
+      The visualizer helps you see why deletion with two children is the most
+      complex case.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Inorder traversal and sorting</div>
+    <p>
+      One unique property of BSTs is that inorder traversal always produces
+      values in sorted order.
+    </p>
+    <p>
+      Try running inorder traversal on a BST in the visualizer and compare it
+      with preorder or postorder to see the difference.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Balanced vs unbalanced BST</div>
+    <p>
+      A balanced BST keeps its height small, making operations fast. An
+      unbalanced BST can degrade into a chain, making performance slow.
+    </p>
+    <p>
+      This limitation is why self-balancing trees exist, even though basic BSTs
+      are easier to understand.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      Many learners confuse binary trees with BSTs. Remember, a BST is not just
+      about having two children — it is about maintaining strict ordering.
+    </p>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+<div class="bt-theory-card" data-keywords="recursion call stack unwind tree">
+  <div class="bt-theory-header">
+    <span>Recursion in Trees</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "RECURSION IN TREES" THEORY HERE
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why trees are naturally recursive</div>
+    <p>
+      Trees are recursive by nature because every subtree is itself a tree.
+      This means the same logic that works for the whole tree also works for
+      its left and right subtrees.
+    </p>
+    <p>
+      When you write a recursive function for a tree, you are simply saying:
+      “do the same work on smaller trees.”
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Base case: the null node</div>
+    <p>
+      Every recursive tree algorithm must stop somewhere. That stopping point
+      is usually a null node. When recursion reaches a null, it immediately
+      returns without doing any work.
+    </p>
+    <p>
+      In the visualizer, notice how recursion goes down until it hits a null
+      child. That moment is the base case being triggered.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Recursive calls: going down the tree</div>
+    <p>
+      Each recursive call moves one level deeper into the tree. The function
+      keeps calling itself on left and right children until it can no longer
+      go deeper.
+    </p>
+    <p>
+      This downward movement builds up the call stack. The deeper the tree,
+      the deeper the stack.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Unwinding: where the real work happens</div>
+    <p>
+      Many important operations in trees happen not during the recursive call,
+      but during the return phase. This phase is called unwinding.
+    </p>
+    <p>
+      In postorder traversal, for example, a node is processed only after both
+      children have returned. The visualizer highlights this moment clearly.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Call stack intuition</div>
+    <p>
+      Each recursive call is placed on the call stack. When a call finishes,
+      it is removed from the stack and control returns to the previous call.
+    </p>
+    <p>
+      Watching traversal animations alongside recursion helps you mentally
+      connect stack behavior with tree structure.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why recursion feels hard at first</div>
+    <p>
+      Recursion feels confusing because you cannot see the call stack directly.
+      Trees make this harder because there are multiple recursive paths.
+    </p>
+    <p>
+      The visualizer solves this by showing how recursion moves down and then
+      back up, step by step.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">When recursion becomes dangerous</div>
+    <p>
+      Deep or skewed trees can cause very deep recursion, which may lead to
+      stack overflow. This is another reason balanced trees are important.
+    </p>
+    <p>
+      By observing tree height in the visualizer, you can predict recursion
+      depth before writing code.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      A common mistake is assuming work happens during recursive calls rather
+      than during returns. This misunderstanding leads to incorrect traversal
+      logic and bugs.
+    </p>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+<div class="bt-theory-card" data-keywords="mirror lca diameter advanced tree">
+  <div class="bt-theory-header">
+    <span>Advanced Tree Concepts</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "ADVANCED TREE CONCEPTS" THEORY HERE
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">What “advanced” really means</div>
+    <p>
+      Advanced tree problems are not about new data structures. They are about
+      applying the same recursion and traversal ideas in smarter ways. If you
+      understand recursion flow, these problems become patterns, not puzzles.
+    </p>
+    <p>
+      Most advanced tree questions reuse the same ideas you have already seen
+      in traversal and construction.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Mirror of a binary tree</div>
+    <p>
+      Creating a mirror of a tree means swapping the left and right children
+      of every node. The structure flips horizontally.
+    </p>
+    <p>
+      In the visualizer, imagine reversing every branch direction. This operation
+      is naturally recursive because each subtree must also be mirrored.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Lowest Common Ancestor (LCA)</div>
+    <p>
+      The lowest common ancestor of two nodes is the deepest node that has both
+      nodes somewhere in its subtree. It represents the point where two paths
+      in the tree meet.
+    </p>
+    <p>
+      In the visualizer, trace paths from two nodes upward. The first node where
+      the paths overlap is the LCA. Recursion helps find this point efficiently.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Diameter of a tree</div>
+    <p>
+      The diameter of a tree is the length of the longest path between any two
+      nodes. This path does not have to pass through the root.
+    </p>
+    <p>
+      Visualizing diameter becomes easier when you think in terms of height.
+      At each node, the longest path may pass through it by combining left and
+      right subtree heights.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Why recursion is the key</div>
+    <p>
+      Problems like mirror, LCA, and diameter all rely on information coming
+      back from recursive calls. The answer is often built during the return
+      phase, not during the call.
+    </p>
+    <p>
+      This is why watching recursion unwind in the visualizer is more important
+      than memorizing steps.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Where these problems appear</div>
+    <p>
+      Advanced tree problems frequently appear in interviews because they test
+      recursion understanding rather than syntax. Once you see the pattern,
+      many problems start to look similar.
+    </p>
+    <p>
+      These concepts are also used internally in compilers, file systems, and
+      network routing algorithms.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      A common mistake is trying to solve advanced tree problems iteratively
+      without understanding recursion flow. This usually leads to complex and
+      buggy logic.
+    </p>
+  </div>
+
+</div>
+
+  </div>
+</div>
+
+
+<div class="bt-theory-card" data-keywords="array representation linked representation">
+  <div class="bt-theory-header">
+    <span>Tree Representation</span>
+    <span class="bt-chevron">+</span>
+  </div>
+
+  <div class="bt-theory-content">
+    <!-- ===============================
+         ADD "TREE REPRESENTATION (ARRAY vs LINKED)" THEORY HERE
+    ================================ -->
+    <div class="bt-theory-block">
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">What representation means</div>
+    <p>
+      Tree representation describes how a tree is stored in memory. The same
+      tree structure can be represented in different ways depending on how we
+      want to access or modify it.
+    </p>
+    <p>
+      This choice affects memory usage, performance, and how easy it is to
+      build or traverse the tree.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Array representation</div>
+    <p>
+      In array representation, nodes are stored level by level. The root is
+      stored at the first position, and children are placed at predictable
+      indices based on their parent.
+    </p>
+    <p>
+      This is exactly the format used by your visualizer when you input a
+      level-order array with null values. It works best for complete or nearly
+      complete binary trees.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Limitations of array representation</div>
+    <p>
+      Array representation wastes space when the tree is sparse or skewed.
+      Missing nodes still occupy positions using null values.
+    </p>
+    <p>
+      In the visualizer, notice how skewed trees require many null entries
+      when represented as arrays.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Linked representation</div>
+    <p>
+      In linked representation, each node stores its value along with references
+      to its left and right children. Nodes exist only where needed.
+    </p>
+    <p>
+      Most recursive algorithms, including traversals and construction, work
+      naturally on this representation. Internally, your visualizer converts
+      array input into a linked structure.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Array vs linked: when to use which</div>
+    <p>
+      Array representation is ideal when the tree is complete and indexing is
+      important. Linked representation is better for dynamic trees where
+      structure changes frequently.
+    </p>
+    <p>
+      Understanding both helps you switch between input formats and internal
+      logic without confusion.
+    </p>
+  </div>
+
+  <div class="bt-theory-part">
+    <div class="bt-theory-tag">Connection to the visualizer</div>
+    <p>
+      When you paste an array into the visualizer, it is first interpreted as a
+      level-order array. Then it is transformed into a linked tree structure so
+      that recursion and traversal can work correctly.
+    </p>
+    <p>
+      This separation between input format and internal structure is a common
+      design pattern in real systems.
+    </p>
+  </div>
+
+  <div class="bt-theory-part bt-mistake">
+    <div class="bt-theory-tag">Common mistake</div>
+    <p>
+      Many learners assume array and linked representations behave the same.
+      In practice, they have very different memory and performance trade-offs.
+    </p>
+  </div>
+
+</div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+<style>
+    /* =====================================================
+   PART 1: DESIGN TOKENS (FOUNDATION)
+   Normal Mode = Dark
+   Industry Mode = Eye-comfort Dark
+===================================================== */
+
+/* ------------------------------
+   COLOR SYSTEM – NORMAL MODE
+-------------------------------- */
+:root {
+  /* Backgrounds */
+  --bt-bg-main: #0b0f19;        /* page background */
+  --bt-bg-card: #111827;        /* card surface */
+  --bt-bg-sub: #0f172a;         /* inner blocks */
+
+  /* Text */
+  --bt-text-primary: #e5e7eb;   /* main readable text */
+  --bt-text-secondary: #9ca3af; /* muted / helper */
+  --bt-text-accent: #818cf8;    /* headings / tags */
+
+  /* Borders */
+  --bt-border-soft: #1f2937;
+  --bt-border-focus: #6366f1;
+
+  /* Status */
+  --bt-error-bg: #2a1215;
+  --bt-error-border: #ef4444;
+
+  /* Glow (very controlled) */
+  --bt-glow-soft: rgba(99,102,241,0.35);
+
+  /* Radius */
+  --bt-radius-sm: 8px;
+  --bt-radius-md: 12px;
+  --bt-radius-lg: 16px;
+
+  /* Spacing scale */
+  --bt-space-1: 6px;
+  --bt-space-2: 10px;
+  --bt-space-3: 16px;
+  --bt-space-4: 22px;
+  --bt-space-5: 28px;
+
+  /* Typography */
+  --bt-font-main: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --bt-font-size-sm: 0.85rem;
+  --bt-font-size-md: 0.95rem;
+  --bt-font-size-lg: 1.05rem;
+}
+
+/* ------------------------------
+   COLOR SYSTEM – INDUSTRY MODE
+   (eye-comfort, lower contrast)
+-------------------------------- */
+.bt-theory-root.industry-mode {
+  /* Backgrounds */
+  --bt-bg-main: #ffffff;
+  --bt-bg-card: #ffffff;
+  --bt-bg-sub: #e1e3e9;
+
+  /* Text (slightly dimmed) */
+  --bt-text-primary: #d6dde6;
+  --bt-text-secondary: #9aa4b2;
+  --bt-text-accent: #a5b4fc;
+
+  /* Borders */
+  --bt-border-soft: #ffffff;
+  --bt-border-focus: #c6c6d7;
+
+  /* Status */
+  --bt-error-bg: #ffffff;
+  --bt-error-border: #f87171;
+
+  /* Glow (reduced for eyes) */
+  --bt-glow-soft: rgba(227, 227, 233, 0.25);
+}
+/* =====================================================
+   PART 2: BASE RESET + ROOT LAYOUT + TYPOGRAPHY
+   Responsibility:
+   - Remove browser inconsistencies
+   - Set reading rhythm
+   - Match Export Array section feel
+===================================================== */
+
+
+/* ------------------------------
+   GLOBAL RESET (SCOPED)
+-------------------------------- */
+
+.bt-theory-root,
+.bt-theory-root * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent inherited white/black surprises */
+.bt-theory-root {
+  font-family: var(--bt-font-main);
+  background-color: var(--bt-bg-main);
+  color: var(--bt-text-primary);
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+
+
+/* ------------------------------
+   ROOT CONTAINER
+-------------------------------- */
+
+.bt-theory-root {
+  width: 100%;
+  padding: var(--bt-space-5) var(--bt-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bt-space-4);
+
+  /* match Export Array section depth */
+  border-radius: var(--bt-radius-lg);
+  background: var(--bt-bg-main);
+}
+
+
+/* ------------------------------
+   SECTION SPACING
+-------------------------------- */
+
+.bt-theory-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bt-space-3);
+}
+
+
+/* ------------------------------
+   SEARCH BAR ZONE
+-------------------------------- */
+
+.bt-theory-search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--bt-space-2);
+}
+
+.bt-theory-search input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: var(--bt-radius-md);
+  background: var(--bt-bg-card);
+  border: 1px solid var(--bt-border-soft);
+  color: var(--bt-text-primary);
+  font-size: var(--bt-font-size-md);
+  outline: none;
+}
+
+.bt-theory-search input::placeholder {
+  color: var(--bt-text-secondary);
+}
+
+.bt-theory-search input:focus {
+  border-color: var(--bt-border-focus);
+  box-shadow: 0 0 0 1px var(--bt-border-focus);
+}
+
+
+/* ------------------------------
+   FONT SIZE CONTROLS
+-------------------------------- */
+
+.bt-font-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.bt-font-controls button {
+  padding: 6px 10px;
+  border-radius: var(--bt-radius-sm);
+  background: var(--bt-bg-card);
+  border: 1px solid var(--bt-border-soft);
+  color: var(--bt-error-border);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.bt-font-controls button:hover {
+  border-color: var(--bt-border-focus);
+}
+
+
+/* ------------------------------
+   HEADINGS SYSTEM
+-------------------------------- */
+
+.bt-theory-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--bt-text-primary);
+  letter-spacing: 0.4px;
+}
+
+.bt-theory-subtitle {
+  font-size: 0.9rem;
+  color: var(--bt-error-border);
+}
+
+
+/* ------------------------------
+   READING TEXT BASE
+-------------------------------- */
+
+.bt-theory-root p {
+  font-size: var(--bt-font-size-md);
+  color: var(--bt-error-border);
+  line-height: 1.7;
+}
+
+.bt-theory-root small {
+  font-size: var(--bt-font-size-sm);
+  color: var(--bt-error-border);
+}
+
+
+/* ------------------------------
+   LINKS (if ever used)
+-------------------------------- */
+
+.bt-theory-root a {
+  color: var(--bt-text-accent);
+  text-decoration: none;
+}
+
+.bt-theory-root a:hover {
+  text-decoration: underline;
+}
+
+
+/* ------------------------------
+   DIVIDER / SEPARATORS
+-------------------------------- */
+
+.bt-theory-divider {
+  height: 1px;
+  background-color: var(--bt-border-soft);
+  margin: var(--bt-space-3) 0;
+}
+
+
+/* ------------------------------
+   SCROLL BEHAVIOR
+-------------------------------- */
+
+.bt-theory-root {
+  scroll-behavior: smooth;
+}
+
+
+/* ------------------------------
+   MOBILE FIRST ADJUSTMENTS
+-------------------------------- */
+
+@media (max-width: 768px) {
+
+  .bt-theory-root {
+    padding: var(--bt-space-4) var(--bt-space-3);
+  }
+
+  .bt-theory-title {
+    font-size: 1.15rem;
+  }
+
+  .bt-theory-root p {
+    font-size: 0.95rem;
+  }
+
+  .bt-theory-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bt-font-controls {
+    align-self: flex-end;
+  }
+}
+
+
+/* ------------------------------
+   ACCESSIBILITY SAFETYy
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .bt-theory-root {
+    scroll-behavior: auto;
+  }
+}
+/* =====================================================
+   PART 3: THEORY CARD SYSTEM
+   Responsibility:
+   - Card structure
+   - Header + toggle behavior
+   - Depth, borders, focus
+   - Open / closed states
+===================================================== */
+
+
+/* ------------------------------
+   CARD WRAPPER
+-------------------------------- */
+
+.bt-theory-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background: var(--bt-border-focus);
+  border: 1px solid var(--bt-border-soft);
+  border-radius: var(--bt-radius-lg);
+
+  overflow: hidden;
+  position: relative;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+
+/* ------------------------------
+   CARD HOVER (DESKTOP ONLY)
+-------------------------------- */
+
+@media (hover: hover) {
+  .bt-theory-card:hover {
+    border-color: var(--bt-border-focus);
+    box-shadow: 0 0 0 1px var(--bt-border-focus);
+  }
+}
+
+
+/* ------------------------------
+   CARD OPEN STATE
+-------------------------------- */
+
+.bt-theory-card.open {
+  border-color: var(--bt-border-focus);
+  box-shadow:
+    0 0 0 1px var(--bt-border-focus),
+    0 12px 30px rgba(0,0,0,0.45);
+}
+
+
+/* ------------------------------
+   CARD HEADER
+-------------------------------- */
+
+.bt-theory-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: var(--bt-space-3) var(--bt-space-4);
+  cursor: pointer;
+
+  background: var(--bt-error-bg);
+  user-select: none;
+
+  position: relative;
+}
+
+
+/* ------------------------------
+   HEADER TITLE
+-------------------------------- */
+
+.bt-theory-header span:first-child {
+  font-size: var(--bt-font-size-lg);
+  font-weight: 600;
+  color: var(--bt-text-primary);
+}
+
+
+/* ------------------------------
+   HEADER ICON (+ / −)
+-------------------------------- */
+
+.bt-theory-header span:last-child {
+  font-size: 1.2rem;
+  color: var(--bt-text-secondary);
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.bt-theory-card.open
+.bt-theory-header span:last-child {
+  transform: rotate(45deg);
+  color: var(--bt-text-accent);
+}
+
+
+/* ------------------------------
+   HEADER FOCUS RING
+-------------------------------- */
+
+.bt-theory-header:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--bt-border-focus);
+}
+
+
+/* ------------------------------
+   CONTENT CONTAINER
+-------------------------------- */
+
+.bt-theory-content {
+  display: none;
+  flex-direction: column;
+  gap: var(--bt-space-3);
+
+  padding: var(--bt-space-4);
+  background: var(--bt-bg-sub);
+}
+
+
+/* ------------------------------
+   CONTENT VISIBLE WHEN OPEN
+-------------------------------- */
+
+.bt-theory-card.open
+.bt-theory-content {
+  display: flex;
+}
+
+
+/* ------------------------------
+   CARD INNER DEPTH LAYER
+-------------------------------- */
+
+.bt-theory-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+
+/* ------------------------------
+   CARD SEPARATION RHYTHM
+-------------------------------- */
+
+.bt-theory-card + .bt-theory-card {
+  margin-top: var(--bt-space-3);
+}
+
+
+/* ------------------------------
+   OPEN CARD SCROLL OFFSET
+-------------------------------- */
+
+.bt-theory-card {
+  scroll-margin-top: 90px;
+}
+
+
+/* ------------------------------
+   MOBILE TUNING
+-------------------------------- */
+
+@media (max-width: 768px) {
+
+  .bt-theory-header {
+    padding: var(--bt-space-3);
+  }
+
+  .bt-theory-header span:first-child {
+    font-size: 1rem;
+  }
+
+  .bt-theory-content {
+    padding: var(--bt-space-3);
+  }
+}
+
+
+/* ------------------------------
+   ACCESSIBILITY – REDUCED MOTION
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .bt-theory-card,
+  .bt-theory-header span:last-child {
+    transition: none;
+  }
+}
+/* =====================================================
+   PART 4: CONTENT BLOCK SYSTEM
+   Responsibility:
+   - Inner theory blocks
+   - Reading hierarchy
+   - Tags, mistakes, emphasis
+===================================================== */
+
+
+/* ------------------------------
+   CONTENT GROUP WRAPPER
+-------------------------------- */
+
+.bt-theory-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bt-space-3);
+}
+
+
+/* ------------------------------
+   BASE CONTENT BLOCK
+-------------------------------- */
+
+.bt-theory-part {
+  position: relative;
+
+  padding: var(--bt-space-4);
+  border-radius: var(--bt-radius-md);
+
+  background: var(--bt-bg-sub);
+  border-left: 3px solid var(--bt-border-focus);
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* ------------------------------
+   BLOCK HOVER (DESKTOP)
+-------------------------------- */
+
+@media (hover: hover) {
+  .bt-theory-part:hover {
+    border-left-color: var(--bt-text-accent);
+  }
+}
+
+
+/* ------------------------------
+   BLOCK STACKING SEPARATION
+-------------------------------- */
+
+.bt-theory-part + .bt-theory-part {
+  margin-top: var(--bt-space-2);
+}
+
+
+/* ------------------------------
+   TAG / LABEL (WHAT / WHY / MISTAKE)
+-------------------------------- */
+
+.bt-theory-tag {
+  display: inline-block;
+
+  margin-bottom: var(--bt-space-2);
+  padding: 4px 10px;
+
+  font-size: var(--bt-font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--bt-text-accent);
+  background: rgb(221, 255, 0);
+
+  border-radius: 999px;
+}
+
+
+/* ------------------------------
+   PARAGRAPH TEXT
+-------------------------------- */
+
+.bt-theory-part p {
+  font-size: var(--bt-font-size-md);
+  line-height: 1.75;
+  color: var(--bt-text-secondary);
+
+  /* reading comfort */
+  max-width: 70ch;
+}
+
+
+/* ------------------------------
+   MULTI-PARAGRAPH RHYTHM
+-------------------------------- */
+
+.bt-theory-part p + p {
+  margin-top: var(--bt-space-2);
+}
+
+
+/* ------------------------------
+   INLINE EMPHASIS
+-------------------------------- */
+
+.bt-theory-part strong {
+  font-weight: 600;
+  color: var(--bt-text-accent);
+}
+
+.bt-theory-part em {
+  font-style: normal;
+  color: var(--bt-text-primary);
+}
+
+
+/* ------------------------------
+   LIST SUPPORT (FUTURE USE)
+-------------------------------- */
+
+.bt-theory-part ul,
+.bt-theory-part ol {
+  margin-top: var(--bt-space-2);
+  padding-left: 20px;
+}
+
+.bt-theory-part li {
+  margin-bottom: 6px;
+  color: var(--bt-text-primary);
+}
+
+
+/* ------------------------------
+   CODE / INLINE TERMS (NO CODE BLOCKS)
+-------------------------------- */
+
+.bt-theory-part code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+
+  padding: 2px 6px;
+  border-radius: 6px;
+
+  background: rgba(169, 24, 24, 0.738);
+  color: var(--bt-text-accent);
+}
+
+
+/* ------------------------------
+   MISTAKE BLOCK (SPECIAL CASE)
+-------------------------------- */
+
+.bt-theory-part.bt-mistake {
+  border-left-color: var(--bt-error-border);
+  background: var(--bt-error-bg);
+}
+
+.bt-theory-part.bt-mistake .bt-theory-tag {
+  color: var(--bt-error-border);
+  background: rgba(239,68,68,0.12);
+}
+
+
+/* ------------------------------
+   VISUAL SEPARATOR (SUBTLE)
+-------------------------------- */
+
+.bt-theory-part::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 1px;
+
+  background: var(--bt-border-soft);
+  opacity: 0.25;
+}
+
+.bt-theory-part:last-child::after {
+  display: none;
+}
+
+
+/* ------------------------------
+   MOBILE TUNING
+-------------------------------- */
+
+@media (max-width: 768px) {
+
+  .bt-theory-part {
+    padding: var(--bt-space-3);
+  }
+
+  .bt-theory-part p {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .bt-theory-tag {
+    font-size: 0.72rem;
+  }
+}
+
+
+/* ------------------------------
+   INDUSTRY MODE ADJUSTMENTS
+-------------------------------- */
+
+.bt-theory-root.industry-mode .bt-theory-part {
+  background: var(--bt-error-border);
+  border-left-color: var(--bt-error-border);
+}
+
+.bt-theory-root.industry-mode .bt-theory-part.bt-mistake {
+  background: rgba(248, 113, 113, 0.934);
+}
+
+
+/* ------------------------------
+   ACCESSIBILITY SAFETY
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .bt-theory-part {
+    transition: none;
+  }
+}
+/* =====================================================
+   PART 5: INTERACTIONS & MICRO-UX
+   Responsibility:
+   - Open / close feedback
+   - Focus & reading flow
+   - Motion without distraction
+===================================================== */
+
+
+/* ------------------------------
+   OPEN CARD EMPHASIS
+-------------------------------- */
+
+.bt-theory-card.open {
+  transform: translateY(-1px);
+}
+
+
+/* ------------------------------
+   DIM NON-ACTIVE CARDS (DESKTOP ONLY)
+-------------------------------- */
+
+@media (hover: hover) {
+  .bt-theory-root:has(.bt-theory-card.open)
+  .bt-theory-card:not(.open) {
+    opacity: 0.6;
+    filter: saturate(0.85);
+  }
+}
+
+
+/* ------------------------------
+   ACTIVE CARD RESTORE
+-------------------------------- */
+
+.bt-theory-card.open {
+  opacity: 1;
+  filter: none;
+}
+
+
+/* ------------------------------
+   CONTENT FADE-IN (NO SLIDE)
+-------------------------------- */
+
+.bt-theory-card.open .bt-theory-content {
+  animation: btFadeIn 0.35s ease;
+}
+
+@keyframes btFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* ------------------------------
+   HEADER TAP FEEDBACK (MOBILE)
+-------------------------------- */
+
+@media (max-width: 768px) {
+
+  .bt-theory-header:active {
+    background: rgba(255,255,255,0.04);
+  }
+}
+
+
+/* ------------------------------
+   READING FOCUS GUIDE
+-------------------------------- */
+
+.bt-theory-card.open
+.bt-theory-part {
+  box-shadow: inset 3px 0 0 var(--bt-border-focus);
+}
+
+
+/* ------------------------------
+   PARAGRAPH FOCUS ON HOVER
+-------------------------------- */
+
+@media (hover: hover) {
+  .bt-theory-part:hover p {
+    color: var(--bt-text-primary);
+  }
+}
+
+
+/* ------------------------------
+   SCROLL COMFORT
+-------------------------------- */
+
+.bt-theory-card {
+  scroll-margin-top: 100px;
+}
+
+
+/* ------------------------------
+   KEYBOARD NAVIGATION
+-------------------------------- */
+
+.bt-theory-header:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 2px var(--bt-border-focus),
+    0 0 0 3px rgba(0,0,0,0.4);
+}
+
+
+/* ------------------------------
+   TOUCH SAFETY
+-------------------------------- */
+
+.bt-theory-header {
+  min-height: 48px;
+}
+
+
+/* ------------------------------
+   REDUCED MOTION SUPPORT
+-------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .bt-theory-card.open {
+    transform: none;
+  }
+
+  .bt-theory-card.open .bt-theory-content {
+    animation: none;
+  }
+
+  .bt-theory-root:has(.bt-theory-card.open)
+  .bt-theory-card:not(.open) {
+    opacity: 1;
+    filter: none;
+  }
+}
+/* =====================================================
+   PART 5: INTERACTIONS & MICRO-UX
+   Responsibility:
+   - Open / close feedback
+   - Focus & reading flow
+   - Motion without distraction
+===================================================== */
+
+
+/* ------------------------------
+   OPEN CARD EMPHASIS
+-------------------------------- */
+
+.bt-theory-card.open {
+  transform: translateY(-1px);
+}
+
+
+/* ------------------------------
+   DIM NON-ACTIVE CARDS (DESKTOP ONLY)
+-------------------------------- */
+
+@media (hover: hover) {
+  .bt-theory-root:has(.bt-theory-card.open)
+  .bt-theory-card:not(.open) {
+    opacity: 0.6;
+    filter: saturate(0.85);
+  }
+}
+
+
+/* ------------------------------
+   ACTIVE CARD RESTORE
+-------------------------------- */
+
+.bt-theory-card.open {
+  opacity: 1;
+  filter: none;
+}
+
+
+/* ------------------------------
+   CONTENT FADE-IN (NO SLIDE)
+-------------------------------- */
+
+.bt-theory-card.open .bt-theory-content {
+  animation: btFadeIn 0.35s ease;
+}
+
+@keyframes btFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* ------------------------------
+   HEADER TAP FEEDBACK (MOBILE)
+-------------------------------- */
+
+@media (max-width: 768px) {
+
+  .bt-theory-header:active {
+    background: rgba(255,255,255,0.04);
+  }
+}
+
+
+/* ------------------------------
+   READING FOCUS GUIDE
+-------------------------------- */
+
+.bt-theory-card.open
+.bt-theory-part {
+  box-shadow: inset 3px 0 0 var(--bt-border-focus);
+}
+
+
+/* ------------------------------
+   PARAGRAPH FOCUS ON HOVER
+-------------------------------- */
+
+@media (hover: hover) {
+  .bt-theory-part:hover p {
+    color: var(--bt-text-primary);
+  }
+}
+
+
+/* ------------------------------
+   SCROLL COMFORT
+-------------------------------- */
+
+.bt-theory-card {
+  scroll-margin-top: 100px;
+}
+
+
+/* ------------------------------
+   KEYBOARD NAVIGATION
+-------------------------------- */
+
+.bt-theory-header:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 2px var(--bt-border-focus),
+    0 0 0 3px rgba(0,0,0,0.4);
+}
+
+
+/* ------------------------------
+   TOUCH SAFETY
+-------------------------------- */
+
+.bt-theory-header {
+  min-height: 48px;
+}
+
+
+/* ------------------------------
+   REDUCED MOTION SUPPORT
+-------------------------------- */
+
+
+/* =====================================================
+   PART 7: DESKTOP SCROLL ENTER / EXIT
+===================================================== */
+
+/* Base hidden state */
+.bt-theory-card {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+
+/* When card enters viewport */
+.bt-theory-card.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* When scrolling UP and card leaves */
+.bt-theory-card.exit-right {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+/* Disable motion for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .bt-theory-card {
+    transform: none;
+    opacity: 1;
+  }
+}
+/* =====================================================
+   PART 8: MOBILE SCROLL ENTER
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .bt-theory-card {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      transform 0.45s ease,
+      opacity 0.45s ease;
+  }
+
+  .bt-theory-card.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* No exit animation on mobile */
+  .bt-theory-card.exit-right {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* =====================================================
+   INDUSTRY MODE – FORCE TEXT VISIBILITY FIX
+===================================================== */
+
+.bt-theory-root.industry-mode
+.bt-theory-part p {
+  color: #e5e7eb !important;
+}
+
+.bt-theory-root.industry-mode
+.bt-theory-part {
+  color: #e5e7eb !important;
+}
+.bt-theory-root.industry-mode
+.bt-theory-part {
+  background-color: #dcdee8;
+}
+/* ================================
+   THEORY FONT SIZE ANCHOR
+================================ */
+
+.bt-theory-root {
+  font-size: 1rem; /* base */
+}
+
+.bt-theory-root * {
+  font-size: inherit;
+}
+
+</style>
+
+
+
+
+
+

@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =============================
+         BASIC META (Google-friendly)
+    ============================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Binary Tree Visualizer to understand tree construction and traversals step by step.">
+    <meta name="keywords" content="Binary Tree, Tree Traversal, Data Structures, Visualizer, DSA">
+    <meta name="author" content="Devansh Dubey">
+
+    <title>Binary Tree Visualizer</title>
+
+    <!-- =============================
+         CSS FILES
+         Loading order does not matter much,
+         but main.css should define base styles
+    ============================== -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/tree.css">
+    <link rel="stylesheet" href="./css/controls.css">
+</head>
+
+<body>
+
+    <!-- =============================
+         HEADER SECTION
+         (Title, short description, branding)
+         FUTURE: navigation / info modal
+    ============================== -->
+<header class="app-header">
+    <div class="header-left">
+        <h1 id="appTitle" title="Reload page">Binary Tree Visualizer</h1>
+        <p class="app-subtitle">
+            Build a binary tree and visualize traversals step by step.
+        </p>
+    </div>
+
+    <div class="global-font-controls">
+        <button id="fontDec">A−</button>
+        <button id="fontInc">A+</button>
+    </div>
+</header>
+
+
+    <!-- =============================
+         INPUT SECTION
+         (Array input / Visual input selector)
+         FUTURE: mode toggle buttons
+    ============================== -->
+
+<!-- =============================
+     INPUT MODE SELECTOR
+============================== -->
+<section class="input-section">
+
+    <h2>Tree Input Mode</h2>
+
+    <div class="input-mode-selector">
+        <label>
+            <input type="radio" name="inputMode" value="array" checked>
+            Array Input
+        </label>
+
+
+
+        <!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== -->
+        <!-- Array Input Extra Tools -->
+<div class="bt-array-tools">
+
+  <button class="bt-tool-btn disabled">
+    <span class="bt-tool-icon">🔀</span>
+    <span class="bt-tool-text">Visual Builder</span>
+    <span class="bt-soon">Coming Soon</span>
+  </button>
+
+  <button class="bt-tool-btn disabled">
+    <span class="bt-tool-icon ai-icon">
+  <svg viewBox="0 0 64 64" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#7c7cff"/>
+        <stop offset="50%" stop-color="#38bdf8"/>
+        <stop offset="100%" stop-color="#22d3ee"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Head -->
+    <rect x="14" y="16" width="36" height="28" rx="8" fill="url(#aiGrad)"/>
+
+    <!-- Eyes -->
+    <circle cx="26" cy="30" r="3" fill="#020617"/>
+    <circle cx="38" cy="30" r="3" fill="#020617"/>
+
+    <!-- Antenna -->
+    <line x1="32" y1="8" x2="32" y2="16" stroke="url(#aiGrad)" stroke-width="3"/>
+    <circle cx="32" cy="6" r="3" fill="url(#aiGrad)"/>
+
+    <!-- Body -->
+    <rect x="20" y="44" width="24" height="10" rx="4" fill="url(#aiGrad)"/>
+  </svg>
+</span>
+
+    <span class="bt-tool-text">AI Scanner</span>
+    <span class="bt-soon">Coming Soon</span>
+  </button>
+
+</div>
+    <!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== --><!-- =============================
+     
+============================== -->
+
+        <!-- <label>
+            <input type="radio" name="inputMode" value="visual">
+            Visual Builder
+        </label> -->
+    </div>
+
+</section>
+
+
+<!-- =============================
+     ARRAY INPUT SECTION
+============================== -->
+<section id="arrayInputSection" class="array-input-section">
+
+    <h3>Enter Tree as Array (Level Order)</h3>
+
+    <p class="input-hint">
+        Use <code>null</code> for missing nodes.  
+        Example: <code>[1, 2, 3, null, 4]</code>
+    </p>
+
+    <textarea
+    id="arrayInput"
+    rows="4"
+    aria-label="Binary tree array input">[ ]</textarea>
+
+
+    <div id="arrayInputError" class="error-message"></div>
+
+    <button id="buildTreeBtn">
+        Build Tree
+    </button>
+
+</section>
+
+
+
+<!-- =============================
+     VISUAL BUILDER SECTION
+============================== -->
+<!-- <section id="visualBuilderSection" class="visual-builder-section">
+    <div id="visualBuilderCanvas" class="visual-builder-canvas">
+         INTERACTIVE VISUAL TREE WILL LIVE HERE -->
+         <!-- <div id="rootPlaceholder" class="empty-node"> -->
+        <!-- <span>+</span> -->
+    <!-- </div>
+    <div id="nodeValueOverlay" class="node-value-overlay hidden">
+    <input
+        type="number"
+        id="nodeValueField"
+        placeholder="Enter value"
+        aria-label="Node value"
+    />
+</div>
+    </div>
+    <div id="visualBuilderMessage" class="info-message"></div>
+</section> --> 
+
+
+ 
+    <!-- =============================
+         TREE VISUALIZATION AREA
+         (Canvas or div-based rendering)
+         FUTURE: zoom, pan, highlight nodes
+    ============================== -->
+ <section class="tree-visualization-section">
+    <div class="tree-top-controls">
+  <button id="treePlayPauseTop" title="Play / Pause">▶</button>
+  <button id="treeStopTop" title="Stop">⏹</button>
+</div>
+
+
+    <h2>Tree Visualization</h2>
+
+    <p class="visualization-hint">
+        The binary tree will be displayed here.  
+        Active and visited nodes will be highlighted during traversal.
+    </p>
+
+    <!-- Tree Render Container -->
+    <!-- FUTURE: renderer.js will control everything inside this -->
+
+    
+<div class="tree-visual-wrapper">
+    <div id="treeCanvas" class="tree-canvas">
+        <div id="treeTransformLayer">
+            <svg id="treeEdges" class="tree-edges">
+  <defs>
+    <marker
+      id="arrowHead"
+      markerWidth="10"
+      markerHeight="10"
+      refX="6"
+      refY="3"
+      orient="auto"
+      markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L6,3 z" fill="currentColor" />
+    </marker>
+  </defs>
+</svg>
+            <div id="treeNodes"></div>
+        </div>
+    </div>
+</div>
+</section>
+    <!-- =============================
+         TRAVERSAL CONTROLS
+         (Inorder, Preorder, Play, Pause, Step)
+    ============================== -->
+   <section class="traversal-controls-section">
+
+    <h2>Tree Traversals</h2>
+
+    <!-- Traversal Type Selection -->
+    <div class="traversal-type-selector">
+        <label for="traversalType">Choose Traversal:</label>
+
+        <select id="traversalType">
+            <option value="inorder">Inorder (Left → Root → Right)</option>
+            <option value="preorder">Preorder (Root → Left → Right)</option>
+            <option value="postorder">Postorder (Left → Right → Root)</option>
+            <option value="levelorder">Level Order (Breadth First)</option>
+        </select>
+    </div>
+
+    <!-- Traversal Control Buttons -->
+    <div class="traversal-buttons">
+        <button id="startTraversalBtn">
+            Start
+        </button>
+        <button id="pauseTraversalBtn" disabled>
+            Pause
+        </button>
+        <button id="stepTraversalBtn" disabled>
+            Step
+        </button>
+        <button id="resetTraversalBtn" disabled>
+            Reset
+        </button>
+    </div>
+<div class="traversal-speed-control">
+    <label for="speedSlider">
+        Speed (ms)
+    </label>
+    <input
+        type="range"
+        id="speedSlider"
+        min="200"
+        max="2000"
+        step="100"
+        value="800"
+    >
+</div>
+
+</section>
+    <!-- =============================
+         OUTPUT SECTION
+         (Traversal result display)
+    ============================== -->
+  <section class="output-section">
+
+    <h2>Traversal Output</h2>
+
+    <p class="output-hint">
+        The traversal result will appear here as nodes are visited.
+    </p>
+
+    <!-- Traversal Output Display -->
+    <div id="traversalOutput" class="traversal-output">
+        <!-- VISITED NODE VALUES WILL APPEAR HERE -->
+    </div>
+<div id="traversalStatus" class="traversal-status">
+    Current: — | Visited: —
+</div>
+
+</section>
+
+    <!-- =============================
+         JAVASCRIPT FILES
+         IMPORTANT: Loading order matters
+    ============================== -->
+
+    <!-- Utility functions (helpers, validators) -->
+    <script src="./js/utils.js"></script>
+
+    <!-- Tree data structure and node logic -->
+    <script src="./js/tree.js"></script>
+
+    <!-- Traversal algorithms -->
+    <script src="./js/traversal.js"></script>
+
+    <!-- Tree rendering logic -->
+    <script src="./js/renderer.js"></script>
+
+    <!-- UI control handlers -->
+    <script src="./js/controls.js"></script>
+
+    <!-- App entry point (initialization) -->
+    <script src="./js/app.js"></script>
+
+
+<!-- ===============================
+     TRAVERSAL CONVERTERS (INJECTED)
+=============================== -->
+<div id="bt-converters-anchor"></div>
+
+<script>
+(function () {
+  const anchor = document.getElementById("bt-converters-anchor");
+  if (!anchor) return;
+
+  // Load Traversal → Level Order
+  fetch("./components/bt-traversal-to-levelorder.html")
+    .then(r => r.text())
+    .then(html => anchor.insertAdjacentHTML("beforeend", html));
+
+  // Load Traversal ↔ Traversal
+  fetch("./components/bt-traversal-converter.html")
+    .then(r => r.text())
+    .then(html => {
+      anchor.insertAdjacentHTML("beforeend", html);
+    });
+})();
+</script>
+
+
+    <!-- =======================
+    =======================
+    COPYABLE ARRAY SECTIONN
+    =======================
+    ======================= -->
+<!-- ========================= -->
+<!-- COPYABLE ARRAY EXPORTER -->
+<!-- ========================= -->
+<section id="array-exporter">
+  <h2>Export Array for Recursion</h2>
+  <p class="subtitle">
+    This is the cleaned version of the array you already built.
+  </p>
+
+  <div class="export-card">
+    <pre id="exportedArray">[ ]</pre>
+    <button id="exportCopyBtn" disabled>Copy</button>
+  </div>
+</section>
+<div id="bt-theory-anchor"></div>
+
+<style>
+  #array-exporter {
+    padding: 70px 20px;
+    background: radial-gradient(900px 500px at top, #0b1020, #020617);
+    color: #e5e7eb;
+    font-family: system-ui, sans-serif;
+  }
+
+  #array-exporter h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  #array-exporter .subtitle {
+    text-align: center;
+    color: #9ca3af;
+    margin-bottom: 36px;
+    font-size: 0.95rem;
+  }
+
+  .export-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  }
+
+  .export-card pre {
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 16px;
+    color: #a5b4fc;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    margin-bottom: 16px;
+  }
+
+  .export-card button {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .export-card button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(79,70,229,0.4);
+  }
+
+  .export-card button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  /* FORCE ARRAY INPUT TEXT SIZE */
+.array-input-section #arrayInput {
+    font-size: 30px !important;
+    line-height: 1.9 !important;
+    font-weight: 800;
+}
+
+</style>
+<script>
+(function () {
+  const outputEl = document.getElementById("exportedArray");
+  const copyBtn = document.getElementById("exportCopyBtn");
+  const arrayInput = document.getElementById("arrayInput");
+
+  if (!arrayInput || !outputEl || !copyBtn) return;
+
+  // keep cursor inside [ ]
+  arrayInput.addEventListener("focus", () => {
+    if (arrayInput.value.trim() === "[ ]") {
+      arrayInput.setSelectionRange(2, 2);
+    }
+  });
+
+  // prevent deleting brackets
+  arrayInput.addEventListener("keydown", (e) => {
+    const pos = arrayInput.selectionStart;
+    if (
+      (pos <= 1 && e.key === "Backspace") ||
+      (pos >= arrayInput.value.length - 1 && e.key === "Delete")
+    ) {
+      e.preventDefault();
+    }
+  });
+
+  // 🔥 SMART PARSER: allows [a, b, null, 3]
+  function smartParseArray(input) {
+    if (!input) return null;
+
+    input = input.trim();
+    if (!input.startsWith("[") || !input.endsWith("]")) return null;
+
+    const body = input.slice(1, -1).trim();
+    if (body === "") return [];
+
+    const parts = body.split(",").map(p => p.trim());
+    const result = [];
+
+    for (let p of parts) {
+      if (p.toLowerCase() === "null") {
+        result.push(null);
+      } else if (!isNaN(p)) {
+        result.push(Number(p));
+      } else {
+        // treat everything else as string
+        result.push(p);
+      }
+    }
+    return result;
+  }
+
+  // 🔥 NORMALIZE FOR JSON OUTPUT
+  function normalizeForOutput(arr) {
+    return arr.map(v => {
+      if (v === null) return null;
+      if (typeof v === "number") return v;
+      return String(v);
+    });
+  }
+
+  function updateFromUserInput() {
+    const raw = arrayInput.value.trim();
+
+    if (!raw) {
+      outputEl.textContent = "[ ]";
+      copyBtn.disabled = true;
+      return;
+    }
+
+    const parsed = smartParseArray(raw);
+    if (!parsed) {
+      outputEl.textContent = "[ ]";
+      copyBtn.disabled = true;
+      return;
+    }
+
+    const normalized = normalizeForOutput(parsed);
+    outputEl.textContent = JSON.stringify(normalized);
+    copyBtn.disabled = false;
+  }
+
+  // 🔥 AUTO-SYNC WITH USER INPUT
+  arrayInput.addEventListener("input", updateFromUserInput);
+
+  // 🔥 COPY BUTTON
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(outputEl.textContent);
+    copyBtn.textContent = "Copied ✓";
+    setTimeout(() => (copyBtn.textContent = "Copy"), 1200);
+  });
+
+  // initial state
+  updateFromUserInput();
+})();
+</script>
+
+
+<!-- =========================
+     INDUSTRY MODE – INLINE FIX
+     Paste at END of index.html
+========================== -->
+<style>
+  /* Toggle container (bottom-left, subtle) */
+  .industry-toggle {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    color: #e5e7eb;
+  }
+
+  .industry-toggle input {
+    width: 42px;
+    height: 22px;
+    appearance: none;
+    background: #6b7280;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .industry-toggle input::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 2px;
+    left: 2px;
+    background: rgb(2, 2, 2);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+  }
+
+  .industry-toggle input:checked {
+    background: #2563eb;
+  }
+
+  .industry-toggle input:checked::before {
+    transform: translateX(20px);
+  }
+
+  /* =========================
+     INDUSTRY MODE OVERRIDES
+  ========================== */
+
+  body.industry-mode {
+    background: #080808 !important;
+    color: #111827 !important;
+  }
+
+  body.industry-mode section {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+  }
+
+  body.industry-mode .tree-canvas {
+    background: #000000 !important;
+    border: 1px solid #ff0000 !important;
+    box-shadow: none !important;
+  }
+
+  body.industry-mode .tree-node {
+    background: #00f2ff !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+  }
+
+  body.industry-mode .tree-node.active {
+    background: #ff0000 !important;
+  }
+
+  body.industry-mode .tree-node.visited {
+    background: #2fff00 !important;
+  }
+
+  body.industry-mode button {
+    background: #0040ff !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+  }
+
+  body.industry-mode p,
+  body.industry-mode label,
+  body.industry-mode h1,
+  body.industry-mode h2,
+  body.industry-mode h3 {
+    color: #111827 !important;
+  }
+</style>
+
+<div class="industry-toggle">
+  <input type="checkbox" id="industryToggleInline">
+  <span>Standard Theme</span>
+</div>
+
+<script>
+  (function () {
+    const toggle = document.getElementById("industryToggleInline");
+    if (!toggle) return;
+
+    toggle.addEventListener("change", () => {
+      document.body.classList.toggle(
+        "industry-mode",
+        toggle.checked
+      );
+    });
+  })();
+</script>
+<!-- =====================================================
+     TREE CANVAS EXPAND / SHRINK (INLINE – INDEX.HTML ONLY)
+====================================================== -->
+
+<style>
+/* ---------- Expand Button ---------- */
+/* ===============================
+   EXPAND ICON – FINAL FIXED
+=============================== */
+
+.tree-expand-btn {
+  position: fixed;        /* 🔥 FINAL */
+  top: 18px;             /* Tree Visualization ke niche */
+  right: 116px;
+  z-index: 9999;
+
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.tree-expand-btn:hover {
+  background: rgba(0,0,0,1);
+}
+
+
+/* ---------- Base ---------- */
+#treeCanvas {
+  position: relative;
+  transition: all 0.35s ease;
+}
+
+/* ===============================
+   BREAK LAYOUT CONSTRAINTS
+=============================== */
+
+body.tree-expanded .tree-visualization-section {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.tree-expanded .tree-visual-wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* ---------- Expanded Canvas ---------- */
+body.tree-expanded #treeCanvas {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 70vh !important;
+  max-height: 70vh !important;
+
+  margin: 0 !important;
+  border-radius: 0 !important;
+
+  box-shadow: 0 35px 100px rgba(0,0,0,0.45);
+  overflow: overlay !important;        /* scrollbar space nahi lega */
+  overscroll-behavior: none !important;
+}
+
+/* Keep rest visible */
+body.tree-expanded .traversal-controls-section,
+body.tree-expanded .output-section {
+  opacity: 1;
+}
+/* =====================================
+   FIX: DO NOT SCALE TREE IN EXPANDED MODE
+===================================== */
+
+/* Stop any zoom / scale */
+body.tree-expanded #treeNodes {
+  transform: scale(1) !important;
+}
+
+/* SVG edges should also stay natural */
+body.tree-expanded #treeEdges {
+  transform: scale(1) !important;
+}
+
+/* Make sure content uses natural size */
+body.tree-expanded #treeNodes,
+body.tree-expanded #treeEdges {
+  transform-origin: top left !important;
+}
+/* ===============================
+   TREE TOP CONTROLS (PLAY / STOP / EXPAND)
+=============================== */
+
+.tree-visualization-section {
+  position: relative; /* anchor for absolute controls */
+}
+
+.tree-top-controls {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+.tree-top-controls button {
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tree-top-controls button:hover {
+  background: rgba(0,0,0,0.95);
+}
+/* ===============================
+   APP FOOTER – FINAL FIX
+=============================== */
+
+
+/* Default / Dark mode */
+.app-footer {
+  margin-top: 60px;
+  padding: 22px 16px;
+  text-align: center;
+  font-size: 14px;
+
+  background: rgba(0, 0, 0, 0.75);
+  color: #f9fafb;
+
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Industry mode (light theme) */
+body.industry-mode .app-footer {
+  background: #acb2b889 !important;
+  color: #0051ff !important;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+
+
+/* Industry mode (light background) */
+body.industry-mode .app-footer {
+  color: #374151;
+  background: transparent;
+  border-top: 1px solid #e5e7eb;
+}
+/* =====================================================
+   INNER TEXT CARD — CSS ONLY (NO HTML CHANGE)
+===================================================== */
+
+/* Base container setup */
+.bt-theory-part {
+  position: relative;
+  padding: 28px 26px;
+  z-index: 0;
+}
+
+/* Fake inner card */
+.bt-theory-part::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 16px;
+  z-index: -1;
+}
+
+/* Lift actual content above fake card */
+.bt-theory-part > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =====================================================
+   NORMAL MODE — DARK CARD + LIGHT TEXT
+===================================================== */
+
+.bt-theory-root .bt-theory-part::before {
+  background: #0f172a; /* deep dark slate */
+}
+
+.bt-theory-root .bt-theory-part p {
+  color: #e5e7eb;
+}
+
+.bt-theory-root .bt-theory-tag {
+  background: rgba(99,102,241,0.18);
+  color: #c7d2fe;
+}
+
+
+/* =====================================================
+   INDUSTRY MODE — LIGHT CARD + DARK TEXT
+===================================================== */
+
+body.industry-mode .bt-theory-part::before {
+  background: #e5e7eb; /* soft paper-like */
+}
+
+body.industry-mode .bt-theory-part p {
+  color: #020617;
+}
+
+body.industry-mode .bt-theory-tag {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+
+/* =====================================================
+   MOBILE TUNING
+===================================================== */
+
+@media (max-width: 768px) {
+  .bt-theory-part {
+    padding: 22px 18px;
+  }
+
+  .bt-theory-part::before {
+    inset: 10px;
+  }
+}
+
+</style>
+
+
+<script>
+    function smartParseArray(input) {
+  if (!input) return null;
+
+  input = input.trim();
+
+  // must start & end with []
+  if (!input.startsWith("[") || !input.endsWith("]")) return null;
+
+  const body = input.slice(1, -1).trim();
+  if (body === "") return [];
+
+  const parts = body.split(",").map(x => x.trim());
+
+  const result = [];
+
+  for (let p of parts) {
+    if (p.toLowerCase() === "null") {
+      result.push(null);
+    }
+    else if (!isNaN(p)) {
+      result.push(Number(p));
+    }
+    else {
+      // treat as string (auto-quote)
+      result.push(p);
+    }
+  }
+
+  return result;
+}
+
+(function () {
+  const startBtn = document.getElementById("startTraversalBtn");
+  const pauseBtn = document.getElementById("pauseTraversalBtn");
+  const resetBtn = document.getElementById("resetTraversalBtn");
+
+  const playPauseTop = document.getElementById("treePlayPauseTop");
+  const stopTop = document.getElementById("treeStopTop");
+  const expandTop = document.getElementById("treeExpandTop");
+
+  if (!startBtn || !pauseBtn || !resetBtn) return;
+
+  function syncTopPlayState() {
+    if (!playPauseTop) return;
+    playPauseTop.textContent = pauseBtn.disabled ? "▶" : "⏸";
+  }
+
+  if (playPauseTop) {
+    playPauseTop.addEventListener("click", () => {
+      pauseBtn.disabled ? startBtn.click() : pauseBtn.click();
+      syncTopPlayState();
+    });
+  }
+
+  if (stopTop) {
+    stopTop.addEventListener("click", () => {
+      resetBtn.click();
+      syncTopPlayState();
+    });
+  }
+
+  if (expandTop) {
+    expandTop.addEventListener("click", () => {
+      const expanded = document.body.classList.toggle("tree-expanded");
+      expandTop.textContent = expanded ? "⤡" : "⤢";
+    });
+  }
+
+  startBtn.addEventListener("click", syncTopPlayState);
+  pauseBtn.addEventListener("click", syncTopPlayState);
+  resetBtn.addEventListener("click", syncTopPlayState);
+
+  syncTopPlayState();
+})();
+</script>
+
+<script>
+(function () {
+  const treeNodes = document.getElementById("treeNodes");
+  if (!treeNodes) return;
+
+  let lastTransform = "";
+
+  const observer = new MutationObserver(() => {
+    if (document.body.classList.contains("tree-expanded")) {
+      // FORCE scale = 1 in expanded mode
+      treeNodes.style.transform = "scale(1)";
+    } else {
+      // allow normal zoom outside expand
+      if (lastTransform) {
+        treeNodes.style.transform = lastTransform;
+      }
+    }
+  });
+
+  observer.observe(treeNodes, {
+    attributes: true,
+    attributeFilter: ["style"]
+  });
+
+  // store last transform when not expanded
+  treeNodes.addEventListener("transitionend", () => {
+    if (!document.body.classList.contains("tree-expanded")) {
+      lastTransform = treeNodes.style.transform;
+    }
+  });
+})();
+</script>
+<footer class="app-footer">
+  <p>
+    © <span id="year"></span> © Devansh Dubey · Binary Tree Visualizer
+  </p>
+</footer>
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+<script>
+function initTraversalConverter() {
+  const root = document.querySelector(".bt-t2t-root");
+  if (!root) return;
+
+  const fromSel = root.querySelector("#btFrom");
+  const toSel = root.querySelector("#btTo");
+
+  // force valid default
+  fromSel.value = "in";
+  toSel.value = "pre";
+
+  const in1 = root.querySelector("#btInput1");
+  const in2 = root.querySelector("#btInput2");
+  const msg = root.querySelector("#btMsg");
+  const out = root.querySelector("#btOut");
+  const copyBtn = root.querySelector("#btCopy");
+  const labelA = root.querySelector("#btInput1Label");
+  const labelB = root.querySelector("#btInput2Label");
+
+  function updateUI() {
+    const from = fromSel.value;
+    const to = toSel.value;
+
+    msg.textContent = "";
+    labelA.textContent = "Traversal A";
+    labelB.textContent = "Traversal B";
+
+    if (
+      from === to ||
+      (from === "pre" && to === "post") ||
+      (from === "post" && to === "pre")
+    ) {
+      msg.textContent = "This conversion needs inorder to define the tree.";
+      return;
+    }
+
+    if (from === "in" && to === "pre") {
+      labelA.textContent = "Inorder";
+      labelB.textContent = "Postorder";
+    } else if (from === "in" && to === "post") {
+      labelA.textContent = "Inorder";
+      labelB.textContent = "Preorder";
+    } else if (from === "pre" && to === "in") {
+      labelA.textContent = "Preorder";
+      labelB.textContent = "Inorder";
+    } else if (from === "post" && to === "in") {
+      labelA.textContent = "Postorder";
+      labelB.textContent = "Inorder";
+    }
+  }
+
+  fromSel.onchange = updateUI;
+  toSel.onchange = updateUI;
+  updateUI();
+
+  function parse(v){
+    try { const a = JSON.parse(v); return Array.isArray(a) ? a : null; }
+    catch { return null; }
+  }
+
+  function build(pre, ino){
+    if(!pre.length) return null;
+    const r = pre[0], i = ino.indexOf(r);
+    if(i < 0) throw 1;
+    return {
+      v:r,
+      l:build(pre.slice(1,i+1), ino.slice(0,i)),
+      r:build(pre.slice(i+1), ino.slice(i+1))
+    };
+  }
+
+
+  function gen(root, t, a=[]){
+    if(!root) return;
+    if(t==="pre") a.push(root.v);
+    gen(root.l,t,a);
+    if(t==="in") a.push(root.v);
+    gen(root.r,t,a);
+    if(t==="post") a.push(root.v);
+    return a;
+  }
+  function buildFromPostIn(post, ino){
+  if (!post.length) return null;
+
+  const rootVal = post[post.length - 1];
+  const idx = ino.indexOf(rootVal);
+  if (idx === -1) throw 1;
+
+  const leftIn = ino.slice(0, idx);
+  const rightIn = ino.slice(idx + 1);
+
+  const leftPost = post.slice(0, leftIn.length);
+  const rightPost = post.slice(leftIn.length, post.length - 1);
+
+  return {
+    v: rootVal,
+    l: buildFromPostIn(leftPost, leftIn),
+    r: buildFromPostIn(rightPost, rightIn)
+  };
+}
+
+  root.querySelector("#btRun").onclick = () => {
+    msg.textContent = "";
+    const a = smartParseArray(in1.value);
+    const b = smartParseArray(in2.value);
+    if(!a || !b) return msg.textContent = "Invalid array input.";
+
+    try {
+      let tree;
+      if (fromSel.value === "pre" && toSel.value === "in") {
+  // preorder + inorder
+  tree = build(a, b);
+}
+      else if (fromSel.value === "post" && toSel.value === "in") {
+  // postorder + inorder
+  tree = buildFromPostIn(a, b);
+}
+else if (fromSel.value === "in" && toSel.value === "pre") {
+  // inorder + postorder → need post + in
+  tree = buildFromPostIn(b, a);
+}
+else if (fromSel.value === "in" && toSel.value === "post") {
+  // inorder + preorder → need pre + in
+  tree = build(b, a);
+}
+      else return msg.textContent = "Invalid or ambiguous conversion.";
+
+      out.textContent = JSON.stringify(gen(tree,toSel.value,[]));
+      copyBtn.disabled = false;
+    } catch {
+      msg.textContent = "Traversals do not match the same tree.";
+    }
+  };
+
+  root.querySelector("#btClear").onclick = () => {
+    in1.value = in2.value = "";
+    out.textContent = "[ ]";
+    msg.textContent = "";
+    copyBtn.disabled = true;
+  };
+
+  copyBtn.onclick = () => {
+    navigator.clipboard.writeText(out.textContent);
+    copyBtn.textContent = "Copied";
+    setTimeout(()=>copyBtn.textContent="Copy",1200);
+  };
+}
+</script>
+<script>
+(function waitForTraversalConverter() {
+  const observer = new MutationObserver(() => {
+    const root = document.querySelector(".bt-t2t-root");
+    if (root) {
+      observer.disconnect();
+      initTraversalConverter();
+    }
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
+</script>
+<script>
+(function () {
+  const anchor = document.getElementById("bt-theory-anchor");
+  if (!anchor) return;
+
+  fetch("./components/bt-theory.html")
+    .then(r => r.text())
+    .then(html => {
+      anchor.insertAdjacentHTML("beforeend", html);
+
+      // 🔥 NOW BIND THEORY LOGIC (AFTER INJECTION)
+      initBtTheory();
+    });
+
+  function initBtTheory() {
+    const root = document.querySelector(".bt-theory-root");
+    if (!root) return;
+
+    const search = root.querySelector("#btTheorySearch");
+    const userOpened = new Set();
+
+    // TOGGLE (accordion)
+    root.addEventListener("click", (e) => {
+      const header = e.target.closest(".bt-theory-header");
+      if (!header) return;
+
+      const card = header.closest(".bt-theory-card");
+      if (!card) return;
+
+      const isOpen = card.classList.contains("open");
+      card.classList.toggle("open");
+
+      if (!isOpen) {
+        userOpened.add(card);
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        userOpened.delete(card);
+      }
+    });
+
+    // SEARCH (case-insensitive, fuzzy)
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      const cards = root.querySelectorAll(".bt-theory-card");
+
+      cards.forEach(card => {
+        const keywords = card.dataset.keywords
+          .toLowerCase()
+          .split(" ");
+
+        const match =
+          q === "" || keywords.some(k => k.includes(q));
+
+        card.style.display = match ? "block" : "none";
+
+        if (q && match) {
+          card.classList.add("open");
+        }
+
+        if (!q) {
+          card.classList.toggle("open", userOpened.has(card));
+        }
+      });
+    });
+    // 🔠 Font size controls
+const theoryRoot = document.getElementById("btTheoryRoot");
+
+let theoryFontScale = 1;
+
+document.getElementById("fontInc").onclick = () => {
+  theoryFontScale = Math.min(theoryFontScale + 0.1, 1.6);
+  theoryRoot.style.fontSize = theoryFontScale + "rem";
+};
+
+document.getElementById("fontDec").onclick = () => {
+  theoryFontScale = Math.max(theoryFontScale - 0.1, 0.85);
+  theoryRoot.style.fontSize = theoryFontScale + "rem";
+};
+
+// =====================================
+// SCROLL ENTER / EXIT ANIMATION (DESKTOP)
+// =====================================
+
+const cards = document.querySelectorAll(".bt-theory-card");
+
+let lastScrollY = window.scrollY;
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      const card = entry.target;
+      const scrollingDown = window.scrollY > lastScrollY;
+
+      if (entry.isIntersecting) {
+        card.classList.add("in-view");
+        card.classList.remove("exit-right");
+      } else if (!scrollingDown) {
+        // leaving while scrolling up
+        card.classList.remove("in-view");
+        card.classList.add("exit-right");
+      }
+    });
+
+    lastScrollY = window.scrollY;
+  },
+  { threshold: 0.15 }
+);
+
+cards.forEach(card => observer.observe(card));
+
+  }
+})();
+</script>
+
+</body>
+</html>

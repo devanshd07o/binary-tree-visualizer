@@ -1,0 +1,200 @@
+<!-- ===============================
+ Traversal ↔ Traversal Converter
+=============================== -->
+<section class="bt-t2t-root">
+  <h2 class="bt-title">Traversal ↔ Traversal</h2>
+  <p class="bt-subtitle">
+    Convert one traversal to another using only valid, unambiguous combinations.
+  </p>
+
+  <div class="bt-box">
+
+    <!-- SELECTORS -->
+    <div class="bt-select-row">
+      <div>
+        <label>From</label>
+        <select id="btFrom">
+          <option value="pre">Preorder</option>
+          <option value="in">Inorder</option>
+          <option value="post">Postorder</option>
+        </select>
+      </div>
+
+      <div>
+        <label>To</label>
+        <select id="btTo">
+          <option value="post">Postorder</option>
+          <option value="pre">Preorder</option>
+          <option value="in">Inorder</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="bt-grid">
+      <div>
+        <label id="btInput1Label">Traversal A</label>
+        <textarea id="btInput1" placeholder="[ A, B, D, E, C ]"></textarea>
+      </div>
+
+      <div>
+        <label id="btInput2Label">Traversal B</label>
+        <textarea id="btInput2" placeholder="[ D, B, E, A, C ]"></textarea>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="bt-actions">
+      <button id="btRun">Convert</button>
+      <button class="ghost" id="btClear">Clear</button>
+    </div>
+
+    <!-- MESSAGE -->
+    <div id="btMsg" class="bt-msg"></div>
+
+    <!-- OUTPUT -->
+    <div class="bt-output">
+      <label>Result</label>
+      <pre id="btOut">[ ]</pre>
+      <button id="btCopy" disabled>Copy</button>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.bt-t2t-root {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: system-ui, sans-serif;
+}
+
+.bt-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.bt-subtitle {
+  color: #9ca3af;
+  margin-bottom: 28px;
+}
+
+.bt-box {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(148,163,184,0.25);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.45);
+}
+
+.bt-select-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.bt-select-row select {
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.bt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.bt-grid label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.bt-grid textarea {
+  width: 100%;
+  min-height: 90px;
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.95rem;
+}
+
+.bt-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+}
+
+.bt-actions button {
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg,#6366f1,#4f46e5);
+  color: #fff;
+}
+
+.bt-actions .ghost {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #cbd5f5;
+}
+
+.bt-msg {
+  margin-top: 16px;
+  font-weight: 600;
+  color: #f87171;
+}
+
+.bt-output {
+  margin-top: 30px;
+}
+
+.bt-output pre {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 16px;
+  color: #a5b4fc;
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+
+.bt-output button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #22c55e;
+  color: #022c22;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.bt-output button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== Industry Mode ===== */
+body.industry-mode .bt-box {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+body.industry-mode textarea,
+body.industry-mode select,
+body.industry-mode .bt-output pre {
+  background: #f9fafb;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
