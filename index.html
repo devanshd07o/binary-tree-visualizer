@@ -9,7 +9,7 @@
     <meta name="description" content="Interactive Binary Tree Visualizer to understand tree construction and traversals step by step.">
     <meta name="keywords" content="Binary Tree, Tree Traversal, Data Structures, Visualizer, DSA">
     <meta name="author" content="Devansh Dubey">
-
+    
     <title>Binary Tree Visualizer</title>
 
     <!-- =============================
@@ -31,11 +31,15 @@
     ============================== -->
 <header class="app-header">
     <div class="header-left">
+      
         <h1 id="appTitle" title="Reload page">Binary Tree Visualizer</h1>
         <p class="app-subtitle">
             Build a binary tree and visualize traversals step by step.
         </p>
     </div>
+    <button onclick="launchRecursionLab()" class="btn-recursion">
+    🚀 Launch Recursion Lab
+</button>
 
     <div class="global-font-controls">
         <button id="fontDec">A−</button>
@@ -198,6 +202,10 @@
     <div class="tree-top-controls">
   <button id="treePlayPauseTop" title="Play / Pause">▶</button>
   <button id="treeStopTop" title="Stop">⏹</button>
+  <button class="tree-expand-btn" id="expandTreeBtn" title="Expand / Shrink">
+  ⤢
+</button>
+
 </div>
 
 
@@ -545,104 +553,165 @@
 </script>
 
 
+
 <!-- =========================
      INDUSTRY MODE – INLINE FIX
      Paste at END of index.html
 ========================== -->
 <style>
+  
   /* Toggle container (bottom-left, subtle) */
-  .industry-toggle {
+/* ===============================
+   REFINED INDUSTRY TOGGLE
+=============================== */
+
+/* =========================================================
+   REFINED INDUSTRY TOGGLE (GLASS EFFECT)
+========================================================= */
+.industry-toggle {
     position: fixed;
-    bottom: 16px;
-    left: 16px;
+    bottom: 20px;
+    left: 20px;
     z-index: 9999;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-family: system-ui, sans-serif;
-    font-size: 14px;
-    color: #e5e7eb;
-  }
+    gap: 12px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #94a3b8; /* Soft blue-grey text */
+    background: rgba(15, 23, 42, 0.9); /* Darker glass for better contrast */
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
 
-  .industry-toggle input {
-    width: 42px;
-    height: 22px;
+.industry-toggle input {
+    width: 40px;
+    height: 20px;
     appearance: none;
-    background: #6b7280;
+    background: #334155; /* Slate off-state */
     border-radius: 999px;
     position: relative;
     cursor: pointer;
     outline: none;
-  }
+    transition: background 0.3s ease;
+}
 
-  .industry-toggle input::before {
+.industry-toggle input::before {
     content: "";
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     top: 2px;
     left: 2px;
-    background: rgb(2, 2, 2);
+    background: #cbd5e1; /* Visible light grey circle */
     border-radius: 50%;
-    transition: transform 0.2s ease;
-  }
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
 
-  .industry-toggle input:checked {
-    background: #2563eb;
-  }
+/* Checked / On State */
+.industry-toggle input:checked {
+    background: #3b82f6; /* Electric Blue */
+}
 
-  .industry-toggle input:checked::before {
+.industry-toggle input:checked::before {
     transform: translateX(20px);
-  }
+    background: #ffffff; /* Pure white when on */
+}
 
-  /* =========================
-     INDUSTRY MODE OVERRIDES
-  ========================== */
+.industry-toggle:hover {
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.2);
+}
 
-  body.industry-mode {
-    background: #080808 !important;
-    color: #111827 !important;
-  }
+/* =========================================================
+   REFINED INDUSTRY MODE (DARK SLATE THEME)
+========================================================= */
 
-  body.industry-mode section {
-    background: #ffffff !important;
-    border: 1px solid #e5e7eb !important;
-    box-shadow: none !important;
-  }
+body.industry-mode {
+    background: #020617 !important; /* Deepest Navy */
+    color: #f8fafc !important;     /* Off-white for readability */
+}
 
-  body.industry-mode .tree-canvas {
-    background: #000000 !important;
-    border: 1px solid #ff0000 !important;
-    box-shadow: none !important;
-  }
+/* Section Cards: Subtly elevated */
+body.industry-mode section {
+    background: #0f172a !important; 
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
+}
 
-  body.industry-mode .tree-node {
-    background: #00f2ff !important;
+/* Visualization Canvas: Professional Terminal Look */
+body.industry-mode .tree-canvas {
+    background: #010409 !important; 
+    border: 1px solid #30363d !important;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Standard Nodes: Cyan glow */
+body.industry-mode .tree-node {
+    background: #0ea5e9 !important; /* Sky Blue */
     color: #ffffff !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
-  }
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.4) !important;
+}
 
-  body.industry-mode .tree-node.active {
-    background: #ff0000 !important;
-  }
+/* Active Node: High energy gold */
+body.industry-mode .tree-node.active {
+    background: #f59e0b !important; /* Amber */
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.6) !important;
+}
 
-  body.industry-mode .tree-node.visited {
-    background: #2fff00 !important;
-  }
+/* Visited Node: Success green */
+body.industry-mode .tree-node.visited {
+    background: #10b981 !important; /* Emerald */
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4) !important;
+}
 
-  body.industry-mode button {
-    background: #0040ff !important;
-    box-shadow: none !important;
+/* Professional Buttons */
+body.industry-mode button {
+    background: #2563eb !important; 
     color: #ffffff !important;
-  }
+    border-radius: 8px !important;
+    border: none !important;
+}
 
-  body.industry-mode p,
-  body.industry-mode label,
-  body.industry-mode h1,
-  body.industry-mode h2,
-  body.industry-mode h3 {
-    color: #111827 !important;
-  }
+body.industry-mode button:hover {
+    background: #1d4ed8 !important;
+    transform: translateY(-1px);
+}
+
+/* Global Typography Visibility Fix */
+body.industry-mode p,
+body.industry-mode label,
+body.industry-mode h1,
+body.industry-mode h2,
+body.industry-mode h3,
+body.industry-mode span,
+body.industry-mode .app-subtitle {
+    color: #f1f5f9 !important; /* Proper off-white */
+}
+
+/* Inputs & Textareas (No more Pink/White issues) */
+body.industry-mode textarea, 
+body.industry-mode input, 
+body.industry-mode select {
+    background: #1e293b !important;
+    color: #ffffff !important; /* White text for input visibility */
+    border: 1px solid #334155 !important;
+    padding: 12px !important;
+}
+
+/* Array Exporter / Theory Card Overrides */
+body.industry-mode .bt-t2t-root,
+body.industry-mode .bt-tl-root,
+body.industry-mode .bt-theory-card,
+body.industry-mode .export-card {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #f1f5f9 !important;
+}
 </style>
 
 <div class="industry-toggle">
@@ -717,19 +786,14 @@ body.tree-expanded .tree-visual-wrapper {
 }
 
 /* ---------- Expanded Canvas ---------- */
+/* EXPAND MODE */
 body.tree-expanded #treeCanvas {
-  width: 100vw !important;
-  max-width: 100vw !important;
-  height: 70vh !important;
-  max-height: 70vh !important;
-
-  margin: 0 !important;
-  border-radius: 0 !important;
-
-  box-shadow: 0 35px 100px rgba(0,0,0,0.45);
-  overflow: overlay !important;        /* scrollbar space nahi lega */
-  overscroll-behavior: none !important;
+  width: 100vw;
+  height: 70vh;
+  border-radius: 0;
 }
+
+
 
 /* Keep rest visible */
 body.tree-expanded .traversal-controls-section,
@@ -805,7 +869,7 @@ body.tree-expanded #treeEdges {
 
 /* Industry mode (light theme) */
 body.industry-mode .app-footer {
-  background: #acb2b889 !important;
+  background: #f1c66ee6 !important;
   color: #0051ff !important;
 
   border-top: 1px solid #e5e7eb;
@@ -815,7 +879,7 @@ body.industry-mode .app-footer {
 
 /* Industry mode (light background) */
 body.industry-mode .app-footer {
-  color: #374151;
+  color: #f2c268;
   background: transparent;
   border-top: 1px solid #e5e7eb;
 }
@@ -869,7 +933,7 @@ body.industry-mode .app-footer {
 ===================================================== */
 
 body.industry-mode .bt-theory-part::before {
-  background: #e5e7eb; /* soft paper-like */
+  background: #061f57; /* soft paper-like */
 }
 
 body.industry-mode .bt-theory-part p {
@@ -878,7 +942,7 @@ body.industry-mode .bt-theory-part p {
 
 body.industry-mode .bt-theory-tag {
   background: #020617;
-  color: #e5e7eb;
+  color: #2b1e14;
 }
 
 
@@ -938,7 +1002,7 @@ body.industry-mode .bt-theory-tag {
 
   const playPauseTop = document.getElementById("treePlayPauseTop");
   const stopTop = document.getElementById("treeStopTop");
-  const expandTop = document.getElementById("treeExpandTop");
+  
 
   if (!startBtn || !pauseBtn || !resetBtn) return;
 
@@ -960,14 +1024,15 @@ body.industry-mode .bt-theory-tag {
       syncTopPlayState();
     });
   }
+  (function () {
+  const btn = document.getElementById("expandTreeBtn");
+  if (!btn) return;
 
-  if (expandTop) {
-    expandTop.addEventListener("click", () => {
-      const expanded = document.body.classList.toggle("tree-expanded");
-      expandTop.textContent = expanded ? "⤡" : "⤢";
-    });
-  }
-
+  btn.addEventListener("click", () => {
+    const expanded = document.body.classList.toggle("tree-expanded");
+    btn.textContent = expanded ? "⤡" : "⤢";
+  });
+})();
   startBtn.addEventListener("click", syncTopPlayState);
   pauseBtn.addEventListener("click", syncTopPlayState);
   resetBtn.addEventListener("click", syncTopPlayState);
@@ -1266,9 +1331,7 @@ document.getElementById("fontDec").onclick = () => {
 // =====================================
 
 const cards = document.querySelectorAll(".bt-theory-card");
-
 let lastScrollY = window.scrollY;
-
 const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
@@ -1295,6 +1358,18 @@ cards.forEach(card => observer.observe(card));
   }
 })();
 </script>
+<div id="index2-anchor"></div>
 
+<script>
+(function () {
+  fetch("./index2.html")
+    .then(r => r.text())
+    .then(html => {
+      document
+        .getElementById("index2-anchor")
+        .insertAdjacentHTML("beforeend", html);
+    });
+})();
+</script>
 </body>
 </html>

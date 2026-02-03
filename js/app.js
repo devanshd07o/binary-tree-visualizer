@@ -88,4 +88,29 @@ if (industryToggle) {
         );
     });
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll('section');
 
+    const observerOptions = {
+        root: null,
+        threshold: 0.1, // 10% dikhte hi trigger
+        rootMargin: "0px 0px -50px 0px" 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // ✅ Enter: Add class to trigger animation
+                entry.target.classList.add('reveal');
+            } else {
+                // 🔄 Exit: Remove class to reset for the next scroll
+                entry.target.classList.remove('reveal');
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
+localStorage.setItem('bt_array', JSON.stringify([1,2,3,null,4]));

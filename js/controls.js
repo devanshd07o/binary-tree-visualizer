@@ -327,3 +327,13 @@ function clearEdgeHighlights() {
         p.classList.remove("call-edge", "return-edge");
     });
 }
+function launchRecursionLab() {
+    // 1. Get the current input value (Assuming input ID is 'arrayInput')
+    const currentArray = document.getElementById('arrayInput').value;
+
+    // 2. Save it to LocalStorage so the new page can read it
+    localStorage.setItem('treeData', currentArray);
+
+    // 3. Open the new page (Make sure recursion.html is in the recursion folder)
+    window.open('recursion/recursion.html', '_blank');
+}

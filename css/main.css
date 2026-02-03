@@ -1,6 +1,30 @@
 /* ================================
    GLOBAL RESET & BASE STYLES
-================================ */
+=============================== */
+/* =========================================================
+   🚀 RENDERING & CLIPPING FIX (ANTI-CRACK)
+========================================================= */
+
+section, .app-header, .tree-canvas {
+    /* 1. Hardware Acceleration: Browser ko GPU use karne par force karta hai */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    /* 2. Containment: Browser ko batata hai ki ye box independent hai */
+    contain: layout style; 
+
+    /* 3. Transition Optimization: Animation ko "jitter-free" banata hai */
+    will-change: transform, opacity;
+}
+
+/* 4. Fix for backdrop-filter lag (The "Ghosting" Fix) */
+section {
+    -webkit-backdrop-filter: blur(18px); /* Safari support */
+    backdrop-filter: blur(18px);
+    /* Background-attachment fix taaki scroll pe crack na ho */
+    background-attachment: fixed;
+}
 * {
     margin: 0;
     padding: 0;
@@ -9,12 +33,14 @@
 
 body {
     font-family: "Inter", system-ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Updated background: Deepest Navy/Slate base with very subtle glows */
     background:
-        radial-gradient(circle at 20% 10%, rgba(5, 135, 242, 0.771), transparent 50%),
-        radial-gradient(circle at 80% 30%, rgba(106, 48, 241, 0.787), transparent 50%),
-        radial-gradient(circle at 50% 90%, rgba(184, 17, 100, 0.632), transparent 50%),
-        linear-gradient(180deg, #030f41, #021360);
-    color: var(--text-main);
+        radial-gradient(circle at 20% 10%, rgba(30, 41, 59, 0.5), transparent 50%), /* Muted slate glow */
+        radial-gradient(circle at 80% 30%, rgba(15, 23, 42, 0.6), transparent 50%), /* Deep navy glow */
+        radial-gradient(circle at 50% 90%, rgba(30, 58, 138, 0.3), transparent 50%), /* Bottom subtle blue */
+        linear-gradient(180deg, #020617, #010409); /* Solid dark foundation for eye comfort */
+    
+    color: #cbd5e1; /* Soft blue-grey text - standard for high-end dark modes */
     line-height: 1.9;
     width: 100%;
     min-height: 100vh;
@@ -22,37 +48,45 @@ body {
     padding: 0;         /* ✅ important */
 }
 
-
-
-
 /* ================================
    HEADINGS
-================================ */
+=============================== */
 h1 {
     font-size: 3rem;
     margin-bottom: 10px;
+    color: #f8fafc; /* Crisp white-blue for headers */
+    letter-spacing: -0.04em; 
 }
 
 h2 {
     font-size: 1.7rem;
     margin-bottom: 12px;
+    color: #e2e8f0; /* Slightly muted for secondary headers */
 }
 
 h3 {
     font-size: 1.4rem;
     margin-bottom: 8px;
+    color: #94a3b8; /* Slate grey for sub-headers to create hierarchy */
 }
 
 /* ================================
    COMMON TEXT
 ================================ */
+/* ================================
+   COMMON TEXT & INLINE CODE
+================================ */
 p {
     font-size: 1rem;
-    color: #f18c09;
+    /* Refined from orange to a soft blue-grey for better readability on dark bg */
+    color: #94a3b8; 
 }
 
 code {
-    background-color: #9403fb;
+    /* Changed from purple to a deep slate with a subtle border for a pro look */
+    background-color: #6783b0; 
+    border: 1px solid #334155;
+    color: #38bdf8; /* Cyan text for that 'coding' vibe */
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9em;
@@ -62,20 +96,20 @@ code {
    SECTION LAYOUT
 ================================ */
 section {
-    background: rgba(231, 163, 163, 0.75);
+    /* Changed from reddish-pink to a deep glassmorphic slate */
+    background: rgba(15, 23, 42, 0.6); 
     backdrop-filter: blur(18px);
     border-radius: 22px;
     padding: 36px 40px;
     margin-bottom: 48px;
+    /* Improved shadow for better depth perception */
     box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Subtle inner edge */
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Thin border for definition */
 }
-
-
-
 
 /* ================================
    HEADER
@@ -83,28 +117,39 @@ section {
 .app-header {
     padding: 48px 32px 56px;
     margin-bottom: 56px;
+    /* Deep blue gradient for a tech-focused hero section */
     background: linear-gradient(
         135deg,
-        #2563eb,
-        #1e40af
+        #1e3a8a, /* Darker Blue */
+        #1e1b4b  /* Deepest Indigo */
     );
     border-radius: 24px;
-    color: #df9595;
-    box-shadow: 0 30px 80px rgba(37, 99, 235, 0.45);
+    /* Changed from pinkish to off-white for professional contrast */
+    color: #f8fafc; 
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* ================================
+   HEADER TYPOGRAPHY & LAYOUT
+================================ */
 .app-header h1 {
     font-size: 3rem;
     font-weight: 900;
     letter-spacing: -0.04em;
     margin-bottom: 12px;
+    /* Keeping it pure white for maximum impact against the dark header */
+    color: #ffffff; 
 }
 
 .app-subtitle {
     font-size: 1.1rem;
-    color: rgba(198, 151, 151, 0.85);
+    /* Changed from pinkish to a soft slate-blue for better harmony with the dark theme */
+    color: #94a3b8; 
     max-width: 680px;
+    line-height: 1.6;
 }
+
 body > header,
 body > section {
     width: 100%;
@@ -123,12 +168,14 @@ body {
 
 .app-header,
 section {
+    /* Smooth entrance animation logic remains untouched */
     animation: fadeUp 0.6s ease both;
 }
 
 @keyframes fadeUp {
     from {
         opacity: 0;
+        /* Subtle lift for a premium feel */
         transform: translateY(12px);
     }
     to {
@@ -136,89 +183,104 @@ section {
         transform: translateY(0);
     }
 }
+/* =========================================================
+   SECTION TYPOGRAPHY
+========================================================= */
 section h2 {
     font-size: 1.6rem;
     font-weight: 800;
     margin-bottom: 12px;
     letter-spacing: -0.02em;
+    /* Changed to a clean white-blue for professional clarity */
+    color: #f8fafc; 
 }
 
 section p {
     font-size: 0.95rem;
-    color: #4b5563;
+    /* Changed from dark grey (#4b5563) to a readable slate-blue */
+    color: #94a3b8; 
 }
+
 /* =========================================================
-   🔥 GLOBAL DESIGN TOKENS
+   🔥 GLOBAL DESIGN TOKENS (PROFESSIONAL SLATE REWRITE)
 ========================================================= */
 :root {
-    --bg-main: #000000;
-    --bg-soft: #161617;
-    --card-bg: rgba(67, 79, 4, 0.37);
-    --card-border: rgba(68, 51, 51, 0.188);
+    /* Base Backgrounds */
+    --bg-main: #020617; /* Deep Navy Black */
+    --bg-soft: #0f172a; /* Slate Blue */
+    
+    /* Card/Section Styling: Glassmorphism with slate base */
+    --card-bg: rgba(15, 23, 42, 0.6); 
+    --card-border: rgba(51, 65, 85, 0.5); /* Muted slate border */
 
-    --text-main: #ff7300;
-    --text-soft: #ddff00;
+    /* Text Palette: Removed orange and lime for a more standard tech feel */
+    --text-main: #f8fafc; /* Crisp light text */
+    --text-soft: #94a3b8; /* Muted slate text */
 
+    /* Accent Palette: Slightly desaturated for professional elegance */
     --blue: #3b82f6;
     --violet: #8b5cf6;
-    --pink: #ec4899;
-    --green: #22c55e;
+    --pink: #d946ef;
+    --green: #10b981;
     --amber: #f59e0b;
 
+    /* Spacing & Effects: Logic preserved exactly as per your code */
     --radius-xl: 28px;
     --radius-lg: 20px;
     --radius-md: 14px;
 
     --blur-xl: blur(32px);
 }
-
 /* =========================================================
-   🌌 PAGE BACKGROUND (INSANE)
+   🌌 PAGE BACKGROUND (REFINED DARK MODE)
 ========================================================= */
 body {
+    /* Using desaturated blues and purples for a more "Midnight" professional look */
     background:
-        radial-gradient(circle at 20% 10%, rgba(5, 135, 242, 0.771), transparent 50%),
-        radial-gradient(circle at 80% 30%, rgba(106, 48, 241, 0.787), transparent 50%),
-        radial-gradient(circle at 50% 90%, rgba(184, 17, 100, 0.632), transparent 50%),
-        linear-gradient(180deg, #030f41, #021360);
+        radial-gradient(circle at 20% 10%, rgba(37, 99, 235, 0.15), transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(79, 70, 229, 0.15), transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(124, 58, 237, 0.1), transparent 50%),
+        linear-gradient(180deg, #020617, #010409); /* Solid dark base for better contrast */
           
     color: var(--text-main);
     font-family: "Inter", system-ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* =========================================================
-   🚀 HERO HEADER
+   🚀 HERO HEADER (STEALTH PRO STYLE)
 ========================================================= */
 .app-header {
     position: relative;
     padding: 72px 56px;
     margin-bottom: 72px;
     border-radius: var(--radius-xl);
-    background:
-        linear-gradient(155deg,
-            rgb(115, 0, 255),
-            rgb(150, 2, 51)
-            
-        );
+    /* Changed from red/purple to a professional Deep Indigo/Slate gradient */
+    background: linear-gradient(
+        155deg,
+        #1e1b4b, /* Deepest Indigo */
+        #0f172a  /* Slate Blue */
+    );
     backdrop-filter: var(--blur-xl);
     box-shadow:
-        0 60px 120px rgb(0, 0, 0),
-        inset 0 1px 0 rgba(103, 2, 2, 0.25);
+        0 60px 120px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Subtle white edge instead of red */
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Soft border for definition */
 }
 
 .app-header::before {
     content: "";
     position: absolute;
     inset: -40%;
+    /* Keeping your conic-gradient but reducing opacity for a more sophisticated glow */
     background: conic-gradient(
         from 0deg,
         var(--blue),
         var(--violet),
-        var(--pink),
+        rgba(59, 130, 246, 0.5), /* Softer blue instead of bright pink */
         var(--blue)
     );
-    opacity: 0.25;
+    opacity: 0.15; /* Reduced from 0.25 for a professional 'Stealth' feel */
     animation: spinGlow 25s linear infinite;
 }
 
@@ -226,50 +288,60 @@ body {
     to { transform: rotate(360deg); }
 }
 
+/* =========================================================
+   🚀 HERO TITLE (REFINED GLASS-PRO STYLE)
+========================================================= */
 .app-header h1 {
     display: inline-block;
 
     padding: 18px 28px;
     border-radius: 18px;
 
+    /* REFINED: Changed from Blue-Red to a Professional Deep-Indigo Glass look */
     background: linear-gradient(
         180deg,
-        rgba(3, 7, 246, 0.949),
-        rgb(255, 2, 2)
+        rgba(30, 58, 138, 0.8), /* Deep Indigo */
+        rgba(15, 23, 42, 0.9)   /* Dark Slate */
     );
 
     backdrop-filter: blur(92px);
 
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    /* Subtle border for definition */
+    border: 1px solid rgba(255, 255, 255, 0.15);
 
     font-size: 3.2rem;
     font-weight: 900;
     letter-spacing: -0.04em;
 
-    color: #fdfbfb;
+    color: #ffffff; /* Pure white for maximum visibility */
 
     text-shadow:
         0 4px 18px rgba(0, 0, 0, 0.45),
         0 1px 2px rgba(0, 0, 0, 0.35);
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Soft inner light */
 
     cursor: pointer;
     user-select: none;
 
+    /* Transition logic remains untouched as per your code */
     transition:
         transform 0.18s ease,
         box-shadow 0.18s ease,
         background 0.18s ease;
 }
 
+/* =========================================================
+   🚀 HERO TITLE INTERACTION (NAME & LOGIC INTACT)
+========================================================= */
 .app-header h1:hover {
     transform: translateY(-2px);
+    /* Updated shadow for deeper depth on dark background */
     box-shadow:
-        0 28px 70px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        0 28px 70px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2); 
 }
 
 .app-header h1:active {
@@ -279,59 +351,66 @@ body {
         inset 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-
 .app-subtitle {
     position: relative;
     font-size: 1.3rem;
-    color: rgb(0, 0, 0);
+    /* REFINED: Changed from Black (0,0,0) to soft blue-grey for readability */
+    color: #94a3b8; 
     max-width: 720px;
     z-index: 2;
 }
 
 /* =========================================================
-   🧊 GLASS SECTIONS
+   🧊 GLASS SECTIONS (EYE-PLEASING DARK)
 ========================================================= */
 section {
-    background: var(--card-bg);
+    background: var(--card-bg); /* Using your root variable */
     backdrop-filter: var(--blur-xl);
     border-radius: var(--radius-xl);
     border: 1px solid var(--card-border);
     padding: 48px 52px;
     margin-bottom: 64px;
+    /* Richer shadow for professional floating effect */
     box-shadow:
-        0 40px 80px rgb(0, 0, 0),
-        inset 0 1px 0 rgba(255,255,255,0.2);
+        0 40px 80px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
     position: relative;
 }
 
-/* glow outline */
+/* glow outline (Name & Structure Intact) */
 section::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    /* Subtler border glow for premium feel */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* =========================================================
-   ✨ SECTION HEADINGS
+   ✨ SECTION HEADINGS (CLEAN CONTRAST)
 ========================================================= */
 section h2 {
     font-size: 1.9rem;
     font-weight: 800;
     margin-bottom: 10px;
     letter-spacing: -0.02em;
+    /* Ensuring heading pops against dark card */
+    color: #f8fafc; 
 }
 
+/* =========================================================
+   SECTION TYPOGRAPHY (NAME & STRUCTURE INTACT)
+========================================================= */
 section p {
-    color: var(--text-soft);
+    color: var(--text-soft); /* Using your root variable */
     font-size: 0.95rem;
     max-width: 680px;
 }
 
 /* =========================================================
-   🧠 INPUT MODE SELECTOR
+   🧠 INPUT MODE SELECTOR (PROFESSIONAL SLATE)
 ========================================================= */
 .input-mode-selector {
     gap: 32px;
@@ -340,27 +419,33 @@ section p {
 .input-mode-selector label {
     padding: 12px 18px;
     border-radius: var(--radius-md);
-    background: rgb(255, 255, 255);
-    border: 1px solid rgba(78, 74, 74, 0.842);
+    /* REFINED: Changed from White to a Deep Slate Glass look for eye comfort */
+    background: rgba(30, 41, 59, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Softer border */
+    color: var(--text-main);
     transition: all 0.25s ease;
+    cursor: pointer;
 }
 
 .input-mode-selector label:hover {
-    background: rgba(255, 255, 255, 0.885);
+    /* Subtle highlight on hover instead of bright white */
+    background: rgba(51, 65, 85, 0.6);
     transform: translateY(-2px);
+    border-color: var(--blue);
 }
 
 /* =========================================================
-   🧾 INPUTS / TEXTAREA (PREMIUM)
+   🧾 INPUTS / TEXTAREA (PREMIUM STEALTH)
 ========================================================= */
 textarea,
 input[type="number"],
 select {
-    background: rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.15);
+    /* Using a slightly deeper slate for better input contrast */
+    background: rgb(92, 92, 92) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: var(--radius-md);
     padding: 16px 18px;
-    color: var(--text-main);
+    color: #ffffff; /* Ensuring high-contrast white text for typing */
     font-size: 0.95rem;
     transition: all 0.25s ease;
 }
@@ -370,102 +455,129 @@ input:focus,
 select:focus {
     outline: none;
     border-color: var(--blue);
+    /* Richer blue glow for that premium tech vibe */
     box-shadow:
-        0 0 0 4px rgba(21, 98, 221, 0.35),
-        0 20px 40px rgba(0, 0, 0, 0.6);
+        0 0 0 4px rgba(59, 130, 246, 0.2), 
+        0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* =========================================================
-   🔘 BUTTONS (INSANE)
+   🔘 BUTTONS (REFINED TECH STYLE)
 ========================================================= */
 button {
     border-radius: var(--radius-md);
     padding: 14px 26px;
     font-weight: 700;
     letter-spacing: 0.02em;
-    background:
-        linear-gradient(135deg,
-            var(--green),
-            var(--violet)
-        );
+    /* REFINED: Changed from Green-Violet to a powerful Electric Blue gradient */
+    background: linear-gradient(135deg, 
+        var(--blue), 
+        #1e40af /* Deep Indigo-Blue */
+    );
+    color: #ffffff; /* Ensuring high-contrast white text */
+    border: none;
     box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.915),
-        inset 0 1px 0 rgba(255,255,255,0.3);
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Subtler inner light */
     transition: all 0.25s ease;
+    cursor: pointer;
 }
 
 button:hover:not(:disabled) {
-    transform: translateY(-3px) scale(1.04);
+    transform: translateY(-3px) scale(1.02); /* Slightly toned down scale for pro feel */
     box-shadow:
-        0 30px 60px rgba(59,130,246,0.65);
+        0 20px 40px rgba(59, 130, 246, 0.3); /* Softer blue glow */
 }
 
 button:disabled {
-    background: linear-gradient(135deg, #475569, #334155);
+    /* Muted slate for disabled state */
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #475569;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 /* =========================================================
-   🌳 TREE CANVAS = SHOWSTOPPER
+   🌳 TREE CANVAS (PROFESSIONAL TERMINAL)
 ========================================================= */
 .tree-canvas {
     padding: 80px 64px;
-    background:
-        radial-gradient(circle at top,
-            rgba(68, 34, 34, 0.392),
-            rgba(55, 37, 86, 0.375)
-        );
+    /* Changed from reddish to a deep midnight slate for focus */
+    background: radial-gradient(circle at top, 
+        rgba(15, 23, 42, 0.8), 
+        rgba(2, 6, 23, 0.9)
+    );
     border-radius: 32px;
-    border: 1px solid rgba(128, 23, 23, 0.813);
+    /* Changed from Red border to Muted Slate for a seamless look */
+    border: 1px solid rgba(51, 65, 85, 0.5); 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.25),
-        0 60px 120px rgba(0,0,0,0.75);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 60px 120px rgba(0, 0, 0, 0.6);
 }
 
 /* =========================================================
-   🔵 TREE NODES = NEON ORBS
+   🔵 TREE NODES (PROFESSIONAL TECH ORBS)
 ========================================================= */
 .tree-node {
-    background: linear-gradient(235deg,rgb(51, 0, 255) , rgb(0, 213, 255));
+    /* REFINED: Using a more sophisticated Electric Blue gradient */
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    color: #ffffff; /* High contrast for node values */
+    font-weight: 700;
+    /* Subtler outer ring for a clean look */
     box-shadow:
-        0 0 0 6px rgba(59, 131, 246, 0.728),
-        0 30px 60px rgba(0,0,0,0.7);
+        0 0 0 4px rgba(59, 130, 246, 0.3),
+        0 15px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tree-node.active {
-    background: linear-gradient(135deg, var(--pink), var(--violet));
+    /* Changed from Pink-Violet to a Golden Focus for clarity */
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
     box-shadow:
-        0 0 0 10px rgba(251, 160, 2, 0.45),
-        0 40px 80px rgba(245,158,11,0.8);
+        0 0 0 6px rgba(245, 158, 11, 0.3),
+        0 20px 40px rgba(245, 158, 11, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .tree-node.visited {
-    background: linear-gradient(135deg, var(--green), #73fd02);
+    /* Clean Emerald Green for visited state */
+    background: linear-gradient(135deg, #10b981, #34d399);
     box-shadow:
-        0 0 0 10px rgba(34,197,94,0.45),
-        0 40px 80px rgb(0, 255, 94);
+        0 0 0 6px rgba(16, 185, 129, 0.3),
+        0 20px 40px rgba(16, 185, 129, 0.3);
 }
 
 /* =========================================================
-   🔚 FOOTER FEEL (END POLISH)
+   🔚 FOOTER FEEL (SUBTLE POLISH)
 ========================================================= */
 .output-section {
     position: relative;
     overflow: hidden;
+    /* Ensuring the section feels like a solid part of the midnight theme */
+    background: rgba(15, 23, 42, 0.4); 
+    border-radius: var(--radius-xl);
 }
 
 .output-section::before {
     content: "";
     position: absolute;
     inset: -40%;
-    background: radial-gradient(circle, rgba(5, 107, 210, 0.876), transparent 60%);
-    opacity: 0.25;
+    /* Muted blue glow instead of bright neon for eye comfort */
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15), transparent 60%);
+    opacity: 0.1; /* Reduced for professional stealth feel */
+    pointer-events: none;
 }
+/* =========================================================
+   📱 MOBILE OPTIMIZATION (COLOR-CORRECTED)
+========================================================= */
 @media (max-width: 600px) {
 
     .app-header {
         padding: 32px 20px 36px;
         border-radius: 20px;
         text-align: left;
+        /* Ensuring header stays dark and readable on mobile */
+        background: linear-gradient(155deg, #1e1b4b, #0f172a) !important;
     }
 
     .app-header h1 {
@@ -473,6 +585,8 @@ button:disabled {
         line-height: 1.15;
         letter-spacing: -0.02em;
         margin-bottom: 10px;
+        /* Clean white for mobile visibility */
+        color: #ffffff !important;
     }
 
     /* Prevent awkward word stacking */
@@ -481,12 +595,17 @@ button:disabled {
     }
 
     .app-subtitle {
-        font-size: 1.95rem;
+        /* Slightly toned down from 1.95rem to be more 'eye-pleasing' */
+        font-size: 1.1rem; 
         line-height: 1.4;
         max-width: 100%;
+        color: #94a3b8 !important;
     }
 }
-/* ===== Global Font Controls ===== */
+
+/* =========================================================
+   🔡 GLOBAL FONT CONTROLS (PROFESSIONAL SLATE)
+========================================================= */
 .global-font-controls {
     display: flex;
     gap: 8px;
@@ -495,18 +614,23 @@ button:disabled {
 .global-font-controls button {
     padding: 6px 12px;
     border-radius: 8px;
-    border: 1px solid #3b82f6;
-    background: rgb(13, 0, 255);
-    color: #ff0000;
+    /* REFINED: Changed from Red text on Blue to White text on Slate-Blue */
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    background: rgba(30, 41, 59, 0.6); 
+    color: #f8fafc; 
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .global-font-controls button:hover {
-    background: rgba(244, 245, 248, 0.956);
+    /* Subtle highlight instead of bright white wash */
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
 }
 
-/* Header layout fix */
+/* Header layout fix (Logic Intact) */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -514,12 +638,16 @@ button:disabled {
     gap: 16px;
 }
 
+/* =========================================================
+   📱 RESPONSIVE ADJUSTMENTS (STRUCTURE INTACT)
+========================================================= */
 @media (max-width: 600px) {
     .app-header {
         flex-direction: column;
         align-items: flex-start;
     }
 }
+
 @media (max-width: 768px) {
     body > * {
         max-width: 100%;
@@ -527,11 +655,16 @@ button:disabled {
         padding-right: 16px;
     }
 }
+
+/* =========================================================
+   🌓 THEME SWITCH (PROFESSIONAL SLATE)
+========================================================= */
 .theme-switch {
     display: flex;
     align-items: center;
     gap: 10px;
     user-select: none;
+    color: #94a3b8; /* Soft slate text for the label */
 }
 
 .switch {
@@ -547,9 +680,11 @@ button:disabled {
 .slider {
     position: absolute;
     inset: 0;
-    background: #9ca3af;
+    /* REFINED: Muted slate for 'off' state to match the dark theme */
+    background: #1e293b; 
     border-radius: 999px;
     transition: 0.25s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .slider::before {
@@ -559,22 +694,27 @@ button:disabled {
     height: 18px;
     left: 3px;
     top: 3px;
-    background: white;
+    /* Crisp white for the toggle circle */
+    background: #f8fafc; 
     border-radius: 50%;
     transition: 0.25s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .switch input:checked + .slider {
-    background: #2563eb;
+    /* Electric blue for 'on' state */
+    background: #2563eb; 
+    border-color: #3b82f6;
 }
 
 .switch input:checked + .slider::before {
     transform: translateX(20px);
+    background: #ffffff;
 }
-/* ===============================
-   ARRAY INPUT – EXTRA TOOLS
-================================ */
 
+/* =========================================================
+   🛠️ ARRAY INPUT – EXTRA TOOLS (PREMIUM STEALTH)
+========================================================= */
 .bt-array-tools {
   display: flex;
   gap: 12px;
@@ -589,16 +729,23 @@ button:disabled {
   gap: 10px;
   padding: 10px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: linear-gradient(145deg, #0b1220, #0f172a);
-  color: #e5e7eb;
+  /* Subtle border and deep slate gradient for a pro look */
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  color: #94a3b8; /* Muted text for disabled/placeholder state */
   font-size: 14px;
-  cursor: not-allowed;
-  opacity: 0.8;
+  cursor: not-allowed; /* Logic preserved as per your code */
+  opacity: 0.7; /* Slightly more muted for that 'Coming Soon' feel */
+  transition: all 0.2s ease;
 }
 
+/* =========================================================
+   🛠️ TOOL ICONS & LABELS (REFINED BLUE)
+========================================================= */
 .bt-tool-icon {
   font-size: 18px;
+  /* Ensuring icons have a soft tech-blue tint */
+  color: #7dd3fc; 
 }
 
 .bt-soon {
@@ -606,29 +753,92 @@ button:disabled {
   font-size: 11px;
   padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(56,189,248,0.15);
-  color: #38bdf8;
-  border: 1px solid rgba(56,189,248,0.3);
+  /* REFINED: Slightly deeper background for better contrast against dark cards */
+  background: rgba(14, 165, 233, 0.15); 
+  color: #38bdf8; /* Keeping your professional cyan/blue */
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase; /* Standard pro-label look */
 }
 
-/* Hover hint (even if disabled) */
+/* Hover hint (Logic Intact - Color Balanced) */
 .bt-tool-btn:hover {
-  box-shadow: 0 0 18px rgba(56,189,248,0.25);
+  /* Softer glow that feels like a 'developer tool' hint */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 
+              0 0 12px rgba(56, 189, 248, 0.15);
 }
+
 /* ===============================
    AI ICON GRADIENT BEHAVIOR
 ================================ */
 
 .bt-tool-icon svg {
   display: block;
+  transition: filter 0.3s ease;
 }
 
-/* subtle glow */
+/* Subtle glow interaction */
 .bt-tool-btn:hover .bt-tool-icon svg {
-  filter: drop-shadow(0 0 6px rgba(56,189,248,0.6));
+  /* Refined drop-shadow for a clean neon effect */
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.5));
 }
 
-/* disabled feel but premium */
+/* Disabled but premium feel */
 .bt-tool-btn.disabled .bt-tool-icon svg {
-  opacity: 0.85;
+  /* Slightly more muted to signal 'inactive' while staying aesthetic */
+  opacity: 0.5; 
+  filter: grayscale(1); /* Adding grayscale to clearly signal disabled state */
+}
+/* =========================================================
+   🧾 ARRAY INPUT TEXT COLOR FIX (NORMAL MODE)
+========================================================= */
+
+/* Main Textarea jahan array likhte ho */
+textarea#arrayInput {
+    color: #ffffff !important; /* Pure white text taaki dark bg par dikhe */
+    caret-color: #3b82f6;      /* Cursor color blue rahega */
+}
+
+/* Placeholder text jo "[ 1, 2, 3 ]" jaisa dikhta hai */
+textarea#arrayInput::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important; /* Subtly visible placeholder */
+    opacity: 1;
+}
+
+/* Enter Tree as Array Label and Example text */
+.input-section label,
+.input-section p,
+.input-section span {
+    color: #cbd5e1 !important; /* Soft blue-grey for instructions */
+}
+
+/* Example box [1, 2, 3, null, 4] styling */
+code {
+    color: #38bdf8 !important; /* Electric cyan for example values */
+    background: rgba(30, 41, 59, 0.5) !important;
+}
+/* =========================================================
+   🚀 RENDERING & CLIPPING FIX (ANTI-CRACK)
+========================================================= */
+
+section, .app-header, .tree-canvas {
+    /* 1. Hardware Acceleration: Browser ko GPU use karne par force karta hai */
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+    /* 2. Containment: Browser ko batata hai ki ye box independent hai */
+    contain: layout style; 
+
+    /* 3. Transition Optimization: Animation ko "jitter-free" banata hai */
+    will-change: transform, opacity;
+}
+
+/* 4. Fix for backdrop-filter lag (The "Ghosting" Fix) */
+section {
+    -webkit-backdrop-filter: blur(18px); /* Safari support */
+    backdrop-filter: blur(18px);
+    /* Background-attachment fix taaki scroll pe crack na ho */
+    background-attachment: fixed;
 }
