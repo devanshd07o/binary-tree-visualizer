@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion Command Deck | v2.0</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+        
+    <link rel="stylesheet" href="recursion.css">
+</head>
+<body>
+
+    <div class="deck-container">
+        
+        <nav class="top-deck">
+            <div class="brand-section">
+                <div class="logo-text">RECURSION<span class="highlight">.EXE</span></div>
+                <div class="status-indicator online">SYSTEM ONLINE</div>
+            </div>
+            
+
+            <!-- UI QUICK CONTROLS -->
+<div class="ui-controls">
+<button id="backBtn" class="back-btn">← Back to Main</button>
+    <!-- Text Size -->
+    <button id="btnFontDec" class="tech-btn icon-only" title="Decrease Text Size">A−</button>
+    <button id="btnFontInc" class="tech-btn icon-only" title="Increase Text Size">A+</button>
+
+    <!-- Speed Control -->
+    <input id="speedControl" type="range" min="200" max="2000" step="100" value="800" title="Animation Speed">
+
+    <!-- Theme Toggle -->
+    <button id="btnTheme" class="tech-btn icon-only" title="Toggle Theme">☀︎</button>
+
+
+</div>
+            <div class="control-cluster input-cluster">
+                <div class="label-tiny">DATA_INPUT_STREAM</div>
+                <div class="input-row">
+                    <select id="inputType" class="tech-select">
+                        <option value="level">FORMAT: Level Order</option>
+                        <option value="pre">FORMAT: Preorder</option>
+                        <option value="in">FORMAT: Inorder</option>
+                        <option value="post">FORMAT: Postorder</option>
+                    </select>
+                    <input type="text" id="rawInput" class="tech-input" value="[1, 2, 3, null, 4]" placeholder="Enter Array Data...">
+                    <button id="btnBuild" class="tech-btn primary">INITIALIZE TREE</button>
+                </div>
+            </div>
+
+            <div class="control-cluster exec-cluster">
+                <div class="label-tiny">EXECUTION_PROTOCOL</div>
+                <div class="input-row">
+                    <select id="algoType" class="tech-select">
+                        <option value="inorder">TRACE: Inorder </option>
+                        <option value="preorder">TRACE: Preorder </option>
+                        <option value="postorder">TRACE: Postorder </option>
+                        <option value="bfs">TRACE: Level Order </option>
+                    </select>
+                    <button id="btnRun" class="tech-btn action">EXECUTE</button>
+                </div>
+            </div>
+            
+        </nav>
+
+        <main class="viewport-grid">
+            
+            <section class="hud-panel tree-panel">
+                <div class="panel-header">
+                    <span class="panel-title">VISUAL_CORE // TREE_TOPOLOGY</span>
+                    <div class="deco-lines"></div>
+                </div>
+                <div class="canvas-wrapper" id="canvasTree">
+                    <svg id="svgTreeLayer"></svg>
+                    </div>
+                <div class="corner-mark top-left"></div>
+                <div class="corner-mark bottom-right"></div>
+            </section>
+
+            <section class="hud-panel circuit-panel">
+                <div class="panel-header">
+                    <span class="panel-title">LOGIC_GATE // ORTHOGONAL_TRACE</span>
+                    <div class="deco-lines"></div>
+                </div>
+
+                <div class="canvas-wrapper grid-bg" id="canvasCircuit">
+                    <svg id="svgCircuitLayer"></svg>
+                    </div>
+                <div class="corner-mark top-right"></div>
+                <div class="corner-mark bottom-left"></div>
+                <div class="flow-panel">
+    <div class="flow-title">CURRENT FLOW</div>
+    <div class="flow-track" id="flowTrack"></div>
+</div>
+
+            </section>
+
+            <section class="hud-panel stack-panel">
+                <div class="panel-header">
+                    <span class="panel-title">MEMORY_STACK</span>
+                    <span class="stack-counter" id="stackCount">0 FRAMES</span>
+                </div>
+                <div class="stack-list" id="stackList">
+                    <div class="empty-state">BUFFER_EMPTY</div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="data-deck">
+            <div class="panel-header">
+                <span class="panel-title">DATA_TERMINAL // OUTPUT_STREAM</span>
+            </div>
+            
+            <div class="terminal-grid">
+                <div class="data-box">
+                    <div class="box-label">
+                        PREORDER
+                        <button class="copy-btn" onclick="copyToClipboard('outPre')" title="Copy">♻️</button>
+                    </div>
+                    <textarea id="outPre" readonly>WAITING_FOR_DATA...</textarea>
+                </div>
+
+                <div class="data-box">
+                    <div class="box-label">
+                        INORDER
+                        <button class="copy-btn" onclick="copyToClipboard('outIn')" title="Copy">♻️</button>
+                    </div>
+                    <textarea id="outIn" readonly>WAITING_FOR_DATA...</textarea>
+                </div>
+
+                <div class="data-box">
+                    <div class="box-label">
+                        POSTORDER
+                        <button class="copy-btn" onclick="copyToClipboard('outPost')" title="Copy">♻️</button>
+                    </div>
+                    <textarea id="outPost" readonly>WAITING_FOR_DATA...</textarea>
+                </div>
+
+                <div class="data-box">
+                    <div class="box-label">
+                        LEVEL_ORDER
+                        <button class="copy-btn" onclick="copyToClipboard('outLevel')" title="Copy">♻️</button>
+                    </div>
+                    <textarea id="outLevel" readonly>WAITING_FOR_DATA...</textarea>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <style>
+       /* ===== CIRCUIT BACKGROUND SVG ===== */
+#svgCircuitLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 3000px;        /* 🔥 big enough, infinite feel */
+  z-index: 0;            /* BACKGROUND */
+  pointer-events: none;
+}
+
+/* ===== CIRCUIT FOREGROUND (BOXES) ===== */
+#canvasCircuit {
+  position: relative;
+  overflow-y: auto;
+}
+
+.circuit-box {
+  position: absolute;
+  z-index: 5;            /* ABOVE SVG */
+}
+ 
+    </style>
+
+    <script src="recursion.js"></script>
+    <script>
+        // ================================
+// THEME TOGGLE BINDING (FINAL)
+// ================================
+window.addEventListener('DOMContentLoaded', () => {
+    const btnTheme = document.getElementById('btnTheme');
+    if (!btnTheme) {
+        console.error('btnTheme not found');
+        return;
+    }
+
+    btnTheme.onclick = () => {
+        APP.toggleTheme();
+    };
+});
+// ================================
+// TEXT SIZE CONTROLLER
+// ================================
+let FONT_SCALE = 1;
+
+function applyFontScale() {
+    document.documentElement.style.fontSize = `${FONT_SCALE * 100}%`;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const inc = document.getElementById('btnFontInc');
+    const dec = document.getElementById('btnFontDec');
+
+    if (inc) inc.onclick = () => {
+        FONT_SCALE = Math.min(1.3, FONT_SCALE + 0.05);
+        applyFontScale();
+    };
+
+    if (dec) dec.onclick = () => {
+        FONT_SCALE = Math.max(0.8, FONT_SCALE - 0.05);
+        applyFontScale();
+    };
+});
+// ================================
+// SPEED CONTROLLER (UI)
+// ================================
+window.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('speedControl');
+    if (!slider) return;
+
+    CONFIG.speed = parseInt(slider.value);
+
+    slider.oninput = () => {
+        CONFIG.speed = parseInt(slider.value);
+    };
+});
+    </script>
+<script>
+  document.getElementById("backBtn").onclick = () => {
+    window.location.href = "../index.html";
+  };
+</script>
+<script>
+let isFocusMode = false;
+let isPaused = false;
+
+    </script>
+
+</body>
+</html>
